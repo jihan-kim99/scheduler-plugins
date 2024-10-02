@@ -205,6 +205,7 @@ func (cs *Coscheduling) PreFilterExtensions() framework.PreFilterExtensions {
 // Permit is the functions invoked by the framework at "Permit" extension point.
 func (cs *Coscheduling) Permit(ctx context.Context, state *framework.CycleState, pod *v1.Pod, nodeName string) (*framework.Status, time.Duration) {
 	waitTime := *cs.scheduleTimeout
+	klog.InfoS("sibal this is my scheduler")
 	s := cs.pgMgr.Permit(ctx, state, pod)
 	var retStatus *framework.Status
 	switch s {
@@ -213,7 +214,7 @@ func (cs *Coscheduling) Permit(ctx context.Context, state *framework.CycleState,
 	case core.PodGroupNotFound:
 		return framework.NewStatus(framework.Unschedulable, "PodGroup not found"), 0
 	case core.Wait:
-		klog.InfoS("Pod is waiting to be scheduled to node", "pod", klog.KObj(pod), "nodeName", nodeName)
+		klog.InfoS("sibal this is mine. Pod is waiting to be scheduled to node", "pod", klog.KObj(pod), "nodeName", nodeName)
 		_, pg := cs.pgMgr.GetPodGroup(ctx, pod)
 		if wait := util.GetWaitTimeDuration(pg, cs.scheduleTimeout); wait != 0 {
 			waitTime = wait
