@@ -4,10 +4,13 @@ import (
 	"context"
 	"fmt"
 
-	v1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/runtime"
+	"k8s.io/client-go/kubernetes"
+	"k8s.io/client-go/rest"
 	"k8s.io/klog/v2"
 	"k8s.io/kubernetes/pkg/scheduler/framework"
+	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	v1 "k8s.io/api/core/v1"
 )
 
 // Name is the name of the plugin used in the plugin registry and configurations.
@@ -16,6 +19,34 @@ const Name = "BlockAllScheduler"
 // BlockAllScheduler is a plugin that blocks all scheduling attempts
 type BlockAllScheduler struct {
 	handle framework.Handle
+}
+
+func getCRDData() {
+	// Build the Kubernetes config (in-cluster or out-of-cluster)
+	config, err := rest.InClusterConfig()
+	if err != nil {
+			klog.Fatalf("Failed to create in-cluster config: %v", err)
+	}
+
+	// Create the clientset
+	clientset, err := kubernetes.NewForConfig(config)
+	if err != nil {
+			klog.Fatalf("Failed to create clientset: %v", err)
+	}
+
+	// Retrieve the CRD data (replace namespace with appropriate one if necessary)
+	crd, err := clientset.RESTClient().
+			Get().
+			AbsPath("/apis/network.example.com/v1/namespaces/kube-system/networkmetrics/cluster-metrics").
+			Do(context.TODO()).
+			Get()
+
+	if err != nil {
+			klog.Fatalf("Failed to retrieve CRD: %v", err)
+	}
+
+	// Print the CRD data
+	klog.Infof("CRD Data: %v", crd)
 }
 
 var _ framework.PreFilterPlugin = &BlockAllScheduler{}
@@ -28,7 +59,8 @@ func (pl *BlockAllScheduler) Name() string {
 // PreFilter invoked at the prefilter extension point.
 func (pl *BlockAllScheduler) PreFilter(ctx context.Context, state *framework.CycleState, pod *v1.Pod) (*framework.PreFilterResult, *framework.Status) {
 	klog.V(1).InfoS("BlockAllScheduler: PreFilter called", "pod", klog.KObj(pod))
-	
+
+	getCRDData()
 	// Log more details about the pod
 	klog.V(2).InfoS("BlockAllScheduler: Pod details", 
 		"podName", pod.Name, 
