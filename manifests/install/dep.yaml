@@ -12,7 +12,6 @@ spec:
     metadata:
       labels:
         app: pause
-        scheduling.x-k8s.io/pod-group: pg1
     spec:
       containers:
       - name: pause
