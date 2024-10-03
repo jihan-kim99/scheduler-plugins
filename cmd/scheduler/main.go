@@ -24,7 +24,7 @@ import (
 	_ "k8s.io/component-base/metrics/prometheus/version"  // for version metric registration
 	"k8s.io/kubernetes/cmd/kube-scheduler/app"
 
-	blockallscheduler "sigs.k8s.io/scheduler-plugins/pkg/blockallschedule"
+	"sigs.k8s.io/scheduler-plugins/pkg/blockallscheduler"
 	"sigs.k8s.io/scheduler-plugins/pkg/capacityscheduling"
 	"sigs.k8s.io/scheduler-plugins/pkg/coscheduling"
 	"sigs.k8s.io/scheduler-plugins/pkg/networkaware/networkoverhead"
