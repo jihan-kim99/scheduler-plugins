@@ -1,0 +1,116 @@
+I1007 12:02:09.529253       1 flags.go:64] FLAG: --allow-metric-labels="[]"
+I1007 12:02:09.529343       1 flags.go:64] FLAG: --allow-metric-labels-manifest=""
+I1007 12:02:09.529348       1 flags.go:64] FLAG: --authentication-kubeconfig=""
+I1007 12:02:09.529350       1 flags.go:64] FLAG: --authentication-skip-lookup="false"
+I1007 12:02:09.529353       1 flags.go:64] FLAG: --authentication-token-webhook-cache-ttl="10s"
+I1007 12:02:09.529357       1 flags.go:64] FLAG: --authentication-tolerate-lookup-failure="true"
+I1007 12:02:09.529358       1 flags.go:64] FLAG: --authorization-always-allow-paths="[/healthz,/readyz,/livez]"
+I1007 12:02:09.529364       1 flags.go:64] FLAG: --authorization-kubeconfig=""
+I1007 12:02:09.529365       1 flags.go:64] FLAG: --authorization-webhook-cache-authorized-ttl="10s"
+I1007 12:02:09.529367       1 flags.go:64] FLAG: --authorization-webhook-cache-unauthorized-ttl="10s"
+I1007 12:02:09.529369       1 flags.go:64] FLAG: --bind-address="0.0.0.0"
+I1007 12:02:09.529372       1 flags.go:64] FLAG: --cert-dir=""
+I1007 12:02:09.529374       1 flags.go:64] FLAG: --client-ca-file=""
+I1007 12:02:09.529375       1 flags.go:64] FLAG: --config="/etc/kubernetes/scheduler-config.yaml"
+I1007 12:02:09.529377       1 flags.go:64] FLAG: --contention-profiling="true"
+I1007 12:02:09.529379       1 flags.go:64] FLAG: --disabled-metrics="[]"
+I1007 12:02:09.529381       1 flags.go:64] FLAG: --feature-gates=""
+I1007 12:02:09.529385       1 flags.go:64] FLAG: --help="false"
+I1007 12:02:09.529387       1 flags.go:64] FLAG: --http2-max-streams-per-connection="0"
+I1007 12:02:09.529400       1 flags.go:64] FLAG: --kube-api-burst="100"
+I1007 12:02:09.529403       1 flags.go:64] FLAG: --kube-api-content-type="application/vnd.kubernetes.protobuf"
+I1007 12:02:09.529405       1 flags.go:64] FLAG: --kube-api-qps="50"
+I1007 12:02:09.529408       1 flags.go:64] FLAG: --kubeconfig=""
+I1007 12:02:09.529410       1 flags.go:64] FLAG: --leader-elect="true"
+I1007 12:02:09.529412       1 flags.go:64] FLAG: --leader-elect-lease-duration="15s"
+I1007 12:02:09.529414       1 flags.go:64] FLAG: --leader-elect-renew-deadline="10s"
+I1007 12:02:09.529415       1 flags.go:64] FLAG: --leader-elect-resource-lock="leases"
+I1007 12:02:09.529417       1 flags.go:64] FLAG: --leader-elect-resource-name="kube-scheduler"
+I1007 12:02:09.529419       1 flags.go:64] FLAG: --leader-elect-resource-namespace="kube-system"
+I1007 12:02:09.529422       1 flags.go:64] FLAG: --leader-elect-retry-period="2s"
+I1007 12:02:09.529424       1 flags.go:64] FLAG: --log-flush-frequency="5s"
+I1007 12:02:09.529426       1 flags.go:64] FLAG: --log-text-info-buffer-size="0"
+I1007 12:02:09.529447       1 flags.go:64] FLAG: --log-text-split-stream="false"
+I1007 12:02:09.529451       1 flags.go:64] FLAG: --logging-format="text"
+I1007 12:02:09.529453       1 flags.go:64] FLAG: --master=""
+I1007 12:02:09.529455       1 flags.go:64] FLAG: --permit-address-sharing="false"
+I1007 12:02:09.529456       1 flags.go:64] FLAG: --permit-port-sharing="false"
+I1007 12:02:09.529458       1 flags.go:64] FLAG: --pod-max-in-unschedulable-pods-duration="5m0s"
+I1007 12:02:09.529460       1 flags.go:64] FLAG: --profiling="true"
+I1007 12:02:09.529462       1 flags.go:64] FLAG: --requestheader-allowed-names="[]"
+I1007 12:02:09.529466       1 flags.go:64] FLAG: --requestheader-client-ca-file=""
+I1007 12:02:09.529468       1 flags.go:64] FLAG: --requestheader-extra-headers-prefix="[x-remote-extra-]"
+I1007 12:02:09.529472       1 flags.go:64] FLAG: --requestheader-group-headers="[x-remote-group]"
+I1007 12:02:09.529700       1 flags.go:64] FLAG: --requestheader-username-headers="[x-remote-user]"
+I1007 12:02:09.529705       1 flags.go:64] FLAG: --secure-port="10259"
+I1007 12:02:09.529708       1 flags.go:64] FLAG: --show-hidden-metrics-for-version=""
+I1007 12:02:09.529710       1 flags.go:64] FLAG: --tls-cert-file=""
+I1007 12:02:09.529712       1 flags.go:64] FLAG: --tls-cipher-suites="[]"
+I1007 12:02:09.529740       1 flags.go:64] FLAG: --tls-min-version=""
+I1007 12:02:09.529743       1 flags.go:64] FLAG: --tls-private-key-file=""
+I1007 12:02:09.529747       1 flags.go:64] FLAG: --tls-sni-cert-key="[]"
+I1007 12:02:09.529782       1 flags.go:64] FLAG: --v="1"
+I1007 12:02:09.529790       1 flags.go:64] FLAG: --version="false"
+I1007 12:02:09.529797       1 flags.go:64] FLAG: --vmodule=""
+I1007 12:02:09.529801       1 flags.go:64] FLAG: --write-config-to=""
+I1007 12:02:09.794542       1 serving.go:380] Generated self-signed cert in-memory
+W1007 12:02:09.795003       1 client_config.go:659] Neither --kubeconfig nor --master was specified.  Using the inClusterConfig.  This might not work.
+I1007 12:02:10.059582       1 topologyscheduler.go:127] "TopologyScheduling: Initializing plugin"
+I1007 12:02:10.060220       1 server.go:154] "Starting Kubernetes Scheduler" version="v0.0.20241007"
+I1007 12:02:10.060247       1 server.go:156] "Golang settings" GOGC="" GOMAXPROCS="" GOTRACEBACK=""
+I1007 12:02:10.063464       1 requestheader_controller.go:169] Starting RequestHeaderAuthRequestController
+I1007 12:02:10.063484       1 configmap_cafile_content.go:202] "Starting controller" name="client-ca::kube-system::extension-apiserver-authentication::client-ca-file"
+I1007 12:02:10.063491       1 shared_informer.go:313] Waiting for caches to sync for RequestHeaderAuthRequestController
+I1007 12:02:10.063495       1 shared_informer.go:313] Waiting for caches to sync for client-ca::kube-system::extension-apiserver-authentication::client-ca-file
+I1007 12:02:10.063507       1 configmap_cafile_content.go:202] "Starting controller" name="client-ca::kube-system::extension-apiserver-authentication::requestheader-client-ca-file"
+I1007 12:02:10.063516       1 shared_informer.go:313] Waiting for caches to sync for client-ca::kube-system::extension-apiserver-authentication::requestheader-client-ca-file
+I1007 12:02:10.063573       1 secure_serving.go:213] Serving securely on [::]:10259
+I1007 12:02:10.063770       1 tlsconfig.go:240] "Starting DynamicServingCertificateController"
+I1007 12:02:10.163725       1 shared_informer.go:320] Caches are synced for client-ca::kube-system::extension-apiserver-authentication::client-ca-file
+I1007 12:02:10.163725       1 shared_informer.go:320] Caches are synced for RequestHeaderAuthRequestController
+I1007 12:02:10.163749       1 shared_informer.go:320] Caches are synced for client-ca::kube-system::extension-apiserver-authentication::requestheader-client-ca-file
+I1007 12:02:17.462054       1 topologyscheduler.go:83] "TopologyScheduling: PreFilter called" pod="default/deploy2-745cd94cfc-zdtr7"
+I1007 12:02:17.462087       1 topologyscheduler.go:89] "TopologyScheduling: PreFilter: Pod has resource label" Resource="mid-layer"
+I1007 12:02:17.486065       1 topologyscheduler.go:95] "TopologyScheduling: PreFilter: Got DistributedJob CRD"
+I1007 12:02:17.486092       1 topologyscheduler.go:107] "TopologyScheduling: PreFilter: Got order level" order=2
+I1007 12:02:17.486103       1 topologyscheduler.go:111] "TopologyScheduling: PreFilter: Pending until prev step starting" order=2 prevOrder=1
+I1007 12:02:17.489659       1 topologyscheduler.go:35] "TopologyScheduling: QueueSort called" pod1="deploy3-54d8599cb5-45khk" pod2="deploy2-745cd94cfc-msstl"
+I1007 12:02:17.489682       1 topologyscheduler.go:41] "TopologyScheduling: QueueSort: Pod namespace same"
+I1007 12:02:17.489688       1 topologyscheduler.go:49] "TopologyScheduling: QueueSort: Pods have resource label" Resource1="top-layer" Resource2="mid-layer"
+I1007 12:02:17.543162       1 topologyscheduler.go:56] "TopologyScheduling: QueueSort: Got DistributedJob CRD"
+I1007 12:02:17.543194       1 topologyscheduler.go:72] "TopologyScheduling: QueueSort: Got order level" order1=3 order2=2
+I1007 12:02:17.543257       1 topologyscheduler.go:35] "TopologyScheduling: QueueSort called" pod1="deploy3-54d8599cb5-zmlzn" pod2="deploy2-745cd94cfc-msstl"
+I1007 12:02:17.543264       1 topologyscheduler.go:41] "TopologyScheduling: QueueSort: Pod namespace same"
+I1007 12:02:17.543270       1 topologyscheduler.go:49] "TopologyScheduling: QueueSort: Pods have resource label" Resource1="top-layer" Resource2="mid-layer"
+I1007 12:02:17.586066       1 topologyscheduler.go:56] "TopologyScheduling: QueueSort: Got DistributedJob CRD"
+I1007 12:02:17.586094       1 topologyscheduler.go:72] "TopologyScheduling: QueueSort: Got order level" order1=3 order2=2
+I1007 12:02:17.586153       1 topologyscheduler.go:35] "TopologyScheduling: QueueSort called" pod1="deploy3-54d8599cb5-45khk" pod2="deploy3-54d8599cb5-zmlzn"
+I1007 12:02:17.586159       1 topologyscheduler.go:41] "TopologyScheduling: QueueSort: Pod namespace same"
+I1007 12:02:17.586163       1 topologyscheduler.go:49] "TopologyScheduling: QueueSort: Pods have resource label" Resource1="top-layer" Resource2="top-layer"
+I1007 12:02:17.588836       1 topologyscheduler.go:56] "TopologyScheduling: QueueSort: Got DistributedJob CRD"
+I1007 12:02:17.588868       1 topologyscheduler.go:72] "TopologyScheduling: QueueSort: Got order level" order1=3 order2=3
+I1007 12:02:17.589056       1 topologyscheduler.go:83] "TopologyScheduling: PreFilter called" pod="default/deploy2-745cd94cfc-msstl"
+I1007 12:02:17.589084       1 topologyscheduler.go:89] "TopologyScheduling: PreFilter: Pod has resource label" Resource="mid-layer"
+I1007 12:02:17.595266       1 topologyscheduler.go:95] "TopologyScheduling: PreFilter: Got DistributedJob CRD"
+I1007 12:02:17.595294       1 topologyscheduler.go:107] "TopologyScheduling: PreFilter: Got order level" order=2
+I1007 12:02:17.595302       1 topologyscheduler.go:111] "TopologyScheduling: PreFilter: Pending until prev step starting" order=2 prevOrder=1
+I1007 12:02:17.611750       1 topologyscheduler.go:83] "TopologyScheduling: PreFilter called" pod="default/deploy3-54d8599cb5-45khk"
+I1007 12:02:17.611778       1 topologyscheduler.go:89] "TopologyScheduling: PreFilter: Pod has resource label" Resource="top-layer"
+I1007 12:02:17.619680       1 topologyscheduler.go:95] "TopologyScheduling: PreFilter: Got DistributedJob CRD"
+I1007 12:02:17.619713       1 topologyscheduler.go:107] "TopologyScheduling: PreFilter: Got order level" order=3
+I1007 12:02:17.619723       1 topologyscheduler.go:111] "TopologyScheduling: PreFilter: Pending until prev step starting" order=3 prevOrder=1
+I1007 12:02:17.633651       1 topologyscheduler.go:83] "TopologyScheduling: PreFilter called" pod="default/deploy3-54d8599cb5-zmlzn"
+I1007 12:02:17.633680       1 topologyscheduler.go:89] "TopologyScheduling: PreFilter: Pod has resource label" Resource="top-layer"
+I1007 12:02:17.660581       1 topologyscheduler.go:95] "TopologyScheduling: PreFilter: Got DistributedJob CRD"
+I1007 12:02:17.660616       1 topologyscheduler.go:107] "TopologyScheduling: PreFilter: Got order level" order=3
+I1007 12:02:17.660627       1 topologyscheduler.go:111] "TopologyScheduling: PreFilter: Pending until prev step starting" order=3 prevOrder=1
+I1007 12:03:32.692397       1 topologyscheduler.go:83] "TopologyScheduling: PreFilter called" pod="default/deploy1-7bf65ddf-k8x9k"
+I1007 12:03:32.692437       1 topologyscheduler.go:89] "TopologyScheduling: PreFilter: Pod has resource label" Resource="bottom-layer"
+I1007 12:03:32.705519       1 topologyscheduler.go:95] "TopologyScheduling: PreFilter: Got DistributedJob CRD"
+I1007 12:03:32.705554       1 topologyscheduler.go:107] "TopologyScheduling: PreFilter: Got order level" order=1
+I1007 12:03:32.705564       1 topologyscheduler.go:116] "TopologyScheduling: PreFilter: All steps started before current pod order. Good to go"
+I1007 12:03:32.706223       1 topologyscheduler.go:83] "TopologyScheduling: PreFilter called" pod="default/deploy1-7bf65ddf-4g2fl"
+I1007 12:03:32.706249       1 topologyscheduler.go:89] "TopologyScheduling: PreFilter: Pod has resource label" Resource="bottom-layer"
+I1007 12:03:32.742012       1 topologyscheduler.go:95] "TopologyScheduling: PreFilter: Got DistributedJob CRD"
+I1007 12:03:32.742048       1 topologyscheduler.go:107] "TopologyScheduling: PreFilter: Got order level" order=1
+I1007 12:03:32.742061       1 topologyscheduler.go:116] "TopologyScheduling: PreFilter: All steps started before current pod order. Good to go"

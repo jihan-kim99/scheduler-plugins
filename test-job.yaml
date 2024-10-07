@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy2
+  labels:
+    app: deploy2
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      resource: mid-layer
+  template:
+    metadata:
+      labels:
+        resource: mid-layer
+    spec:
+      schedulerName: scheduler-plugins-scheduler
+      containers:
+      - name: mid-layer-container
+        image: busybox
+        command: ["sh", "-c", "echo Hello, Kubernetes! && sleep 3600"]
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy3
+  labels:
+    app: deploy3
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      resource: top-layer
+  template:
+    metadata:
+      labels:
+        resource: top-layer
+    spec:
+      schedulerName: scheduler-plugins-scheduler
+      containers:
+      - name: top-layer-container
+        image: busybox
+        command: ["sh", "-c", "echo Hello, Kubernetes! && sleep 3600"]
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy1
+  labels:
+    app: deploy1
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      resource: bottom-layer
+  template:
+    metadata:
+      labels:
+        resource: bottom-layer
+    spec:
+      schedulerName: scheduler-plugins-scheduler
+      containers:
+      - name: bottom-layer-container
+        image: busybox
+        command: ["sh", "-c", "echo Hello, Kubernetes! && sleep 3600"]

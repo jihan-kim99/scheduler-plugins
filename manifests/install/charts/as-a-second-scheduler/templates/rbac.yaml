@@ -69,6 +69,9 @@ rules:
 - apiGroups: ["network.example.com"]
   resources: ["networkmetrics"]
   verbs: ["get", "list", "watch"]
+- apiGroups: ["batch.ddl.com"]
+  resources: ["distributedjobs"]
+  verbs: ["get", "list", "watch"]
 # for network-aware plugins add the following lines (scheduler-plugins v0.29.7)
 #- apiGroups: [ "appgroup.diktyo.x-k8s.io" ]
 #  resources: [ "appgroups" ]
