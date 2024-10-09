@@ -38,7 +38,6 @@ func (pl *TopologyScheduling) Less(podInfo1 *framework.QueuedPodInfo, podInfo2 *
 		s := &queuesort.PrioritySort{}
 		return s.Less(podInfo1, podInfo2)
 	}
-	klog.V(1).InfoS("TopologyScheduling: QueueSort: Pod namespace same")
 
 	resource1, exists1 := pod1.Labels["resource"]
 	resource2, exists2 := pod2.Labels["resource"]
@@ -46,14 +45,13 @@ func (pl *TopologyScheduling) Less(podInfo1 *framework.QueuedPodInfo, podInfo2 *
 		s := &queuesort.PrioritySort{}
 		return s.Less(podInfo1, podInfo2)
 	}
-	klog.V(1).InfoS("TopologyScheduling: QueueSort: Pods have resource label", "Resource1", resource1, "Resource2", resource2)
+	klog.V(1).InfoS("TopologyScheduling: QueueSort: Pods have resource label", "pod1", pod1.Name, "Resource1", resource1, "pod2", pod2.Name, "Resource2", resource2)
 
 	workloadStatus, err := getDistributedJobStatus(pod1.Namespace)
 	if err != nil {
 		s := &queuesort.PrioritySort{}
 		return s.Less(podInfo1, podInfo2)
 	}
-	klog.V(1).InfoS("TopologyScheduling: QueueSort: Got DistributedJob CRD")
 
 	var pod1Order = -1
 	var pod2Order = -1
@@ -86,14 +84,11 @@ func (pl *TopologyScheduling) PreFilter(ctx context.Context, state *framework.Cy
 	if !exists {
 		return &framework.PreFilterResult{}, framework.NewStatus(framework.Success, "")
 	}
-	klog.V(1).InfoS("TopologyScheduling: PreFilter: Pod has resource label", "Resource", resource)
 
 	workloadStatus, err := getDistributedJobStatus(pod.Namespace)
 	if err != nil {
 		return &framework.PreFilterResult{}, framework.NewStatus(framework.Success, "")
 	}
-	klog.V(1).InfoS("TopologyScheduling: PreFilter: Got DistributedJob CRD")
-
 	var podOrder = -1
 	for i, _ := range workloadStatus.Resource {
 		if resource == workloadStatus.Resource[i] {
@@ -102,9 +97,9 @@ func (pl *TopologyScheduling) PreFilter(ctx context.Context, state *framework.Cy
 		}
 	}
 	if podOrder == -1 {
-		return &framework.PreFilterResult{}, framework.NewStatus(framework.Success, "")
+		klog.V(1).InfoS("TopologyScheduling: PreFilter: Unknown resource label", "resource", resource)
+		return &framework.PreFilterResult{}, framework.NewStatus(framework.UnschedulableAndUnresolvable, "")
 	}
-	klog.V(1).InfoS("TopologyScheduling: PreFilter: Got order level", "order", podOrder)
 
 	for i, _ := range workloadStatus.Resource {
 		if workloadStatus.Order[i] < podOrder && workloadStatus.Phase[i] != "Running" && workloadStatus.Phase[i] != "Succeeded" {

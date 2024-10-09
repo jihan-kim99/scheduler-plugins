@@ -1,0 +1,41 @@
+apiVersion: network.example.com/v1
+kind: NetworkMetrics
+metadata:
+  name: cluster-metrics
+  namespace: kube-system
+spec:
+  metrics:
+    bandwidth:
+      kind-worker:
+        kind-worker2: 120.5  # Mbps
+        kind-worker3: 115.3  # Mbps
+        kind-worker4: 110.8  # Mbps
+      kind-worker2:
+        kind-worker: 120.5   # Mbps
+        kind-worker3: 130.7  # Mbps
+        kind-worker4: 125.4  # Mbps
+      kind-worker3:
+        kind-worker: 115.3   # Mbps
+        kind-worker2: 130.7  # Mbps
+        kind-worker4: 118.9  # Mbps
+      kind-worker4:
+        kind-worker: 110.8   # Mbps
+        kind-worker2: 125.4  # Mbps
+        kind-worker3: 118.9  # Mbps
+    latency:
+      kind-worker:
+        kind-worker2: 10.3   # ms
+        kind-worker3: 11.5   # ms
+        kind-worker4: 9.8    # ms
+      kind-worker2:
+        kind-worker: 10.3    # ms
+        kind-worker3: 12.1   # ms
+        kind-worker4: 11.2   # ms
+      kind-worker3:
+        kind-worker: 11.5    # ms
+        kind-worker2: 12.1   # ms
+        kind-worker4: 10.9   # ms
+      kind-worker4:
+        kind-worker: 9.8     # ms
+        kind-worker2: 11.2   # ms
+        kind-worker3: 10.9   # ms

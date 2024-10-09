@@ -5,7 +5,7 @@ metadata:
   labels:
     app: deploy2
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       resource: mid-layer
@@ -28,7 +28,7 @@ metadata:
   labels:
     app: deploy3
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       resource: top-layer
@@ -51,7 +51,7 @@ metadata:
   labels:
     app: deploy1
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       resource: bottom-layer
