@@ -26,7 +26,7 @@ require (
 	k8s.io/klog/hack/tools v0.0.0-20210917071902-331d2323a192
 	k8s.io/klog/v2 v2.120.1
 	k8s.io/kube-scheduler v0.30.4
-	k8s.io/kubernetes v1.30.4
+	k8s.io/kubernetes v1.31.1
 	k8s.io/utils v0.0.0-20230726121419-3b25d923346b
 	sigs.k8s.io/controller-runtime v0.18.5
 	sigs.k8s.io/security-profiles-operator v0.4.0

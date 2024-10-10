@@ -146,7 +146,6 @@ func (pl *NetworkScheduling) Score(ctx context.Context, state *framework.CycleSt
 	// Get current node's bandwidth and latency metrics with the previous node
 	curBandwidth := networkMetrics.Bandwidth[prevNode][nodeName]
 	curLatency := networkMetrics.Latency[prevNode][nodeName]
-	klog.V(1).InfoS("NetworkScheduling: Score: ggg")
 
 	// Check if the node meets latency requirements first
 	if curLatency > limitLatency {

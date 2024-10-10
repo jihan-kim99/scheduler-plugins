@@ -1,216 +1,102 @@
-I1009 12:35:49.366498       1 flags.go:64] FLAG: --allow-metric-labels="[]"
-I1009 12:35:49.366613       1 flags.go:64] FLAG: --allow-metric-labels-manifest=""
-I1009 12:35:49.366619       1 flags.go:64] FLAG: --authentication-kubeconfig=""
-I1009 12:35:49.366621       1 flags.go:64] FLAG: --authentication-skip-lookup="false"
-I1009 12:35:49.366623       1 flags.go:64] FLAG: --authentication-token-webhook-cache-ttl="10s"
-I1009 12:35:49.366626       1 flags.go:64] FLAG: --authentication-tolerate-lookup-failure="true"
-I1009 12:35:49.366629       1 flags.go:64] FLAG: --authorization-always-allow-paths="[/healthz,/readyz,/livez]"
-I1009 12:35:49.366634       1 flags.go:64] FLAG: --authorization-kubeconfig=""
-I1009 12:35:49.366636       1 flags.go:64] FLAG: --authorization-webhook-cache-authorized-ttl="10s"
-I1009 12:35:49.366637       1 flags.go:64] FLAG: --authorization-webhook-cache-unauthorized-ttl="10s"
-I1009 12:35:49.366639       1 flags.go:64] FLAG: --bind-address="0.0.0.0"
-I1009 12:35:49.366642       1 flags.go:64] FLAG: --cert-dir=""
-I1009 12:35:49.366644       1 flags.go:64] FLAG: --client-ca-file=""
-I1009 12:35:49.366645       1 flags.go:64] FLAG: --config="/etc/kubernetes/scheduler-config.yaml"
-I1009 12:35:49.366647       1 flags.go:64] FLAG: --contention-profiling="true"
-I1009 12:35:49.366648       1 flags.go:64] FLAG: --disabled-metrics="[]"
-I1009 12:35:49.366659       1 flags.go:64] FLAG: --feature-gates=""
-I1009 12:35:49.366671       1 flags.go:64] FLAG: --help="false"
-I1009 12:35:49.366673       1 flags.go:64] FLAG: --http2-max-streams-per-connection="0"
-I1009 12:35:49.366675       1 flags.go:64] FLAG: --kube-api-burst="100"
-I1009 12:35:49.366678       1 flags.go:64] FLAG: --kube-api-content-type="application/vnd.kubernetes.protobuf"
-I1009 12:35:49.366681       1 flags.go:64] FLAG: --kube-api-qps="50"
-I1009 12:35:49.366684       1 flags.go:64] FLAG: --kubeconfig=""
-I1009 12:35:49.366686       1 flags.go:64] FLAG: --leader-elect="true"
-I1009 12:35:49.366688       1 flags.go:64] FLAG: --leader-elect-lease-duration="15s"
-I1009 12:35:49.366690       1 flags.go:64] FLAG: --leader-elect-renew-deadline="10s"
-I1009 12:35:49.366692       1 flags.go:64] FLAG: --leader-elect-resource-lock="leases"
-I1009 12:35:49.366694       1 flags.go:64] FLAG: --leader-elect-resource-name="kube-scheduler"
-I1009 12:35:49.366695       1 flags.go:64] FLAG: --leader-elect-resource-namespace="kube-system"
-I1009 12:35:49.366697       1 flags.go:64] FLAG: --leader-elect-retry-period="2s"
-I1009 12:35:49.366699       1 flags.go:64] FLAG: --log-flush-frequency="5s"
-I1009 12:35:49.366702       1 flags.go:64] FLAG: --log-text-info-buffer-size="0"
-I1009 12:35:49.366708       1 flags.go:64] FLAG: --log-text-split-stream="false"
-I1009 12:35:49.366709       1 flags.go:64] FLAG: --logging-format="text"
-I1009 12:35:49.366711       1 flags.go:64] FLAG: --master=""
-I1009 12:35:49.366713       1 flags.go:64] FLAG: --permit-address-sharing="false"
-I1009 12:35:49.366715       1 flags.go:64] FLAG: --permit-port-sharing="false"
-I1009 12:35:49.366717       1 flags.go:64] FLAG: --pod-max-in-unschedulable-pods-duration="5m0s"
-I1009 12:35:49.366736       1 flags.go:64] FLAG: --profiling="true"
-I1009 12:35:49.366740       1 flags.go:64] FLAG: --requestheader-allowed-names="[]"
-I1009 12:35:49.366746       1 flags.go:64] FLAG: --requestheader-client-ca-file=""
-I1009 12:35:49.366748       1 flags.go:64] FLAG: --requestheader-extra-headers-prefix="[x-remote-extra-]"
-I1009 12:35:49.366751       1 flags.go:64] FLAG: --requestheader-group-headers="[x-remote-group]"
-I1009 12:35:49.366755       1 flags.go:64] FLAG: --requestheader-username-headers="[x-remote-user]"
-I1009 12:35:49.366758       1 flags.go:64] FLAG: --secure-port="10259"
-I1009 12:35:49.366760       1 flags.go:64] FLAG: --show-hidden-metrics-for-version=""
-I1009 12:35:49.366761       1 flags.go:64] FLAG: --tls-cert-file=""
-I1009 12:35:49.366763       1 flags.go:64] FLAG: --tls-cipher-suites="[]"
-I1009 12:35:49.366767       1 flags.go:64] FLAG: --tls-min-version=""
-I1009 12:35:49.366770       1 flags.go:64] FLAG: --tls-private-key-file=""
-I1009 12:35:49.366771       1 flags.go:64] FLAG: --tls-sni-cert-key="[]"
-I1009 12:35:49.366790       1 flags.go:64] FLAG: --v="1"
-I1009 12:35:49.366796       1 flags.go:64] FLAG: --version="false"
-I1009 12:35:49.366818       1 flags.go:64] FLAG: --vmodule=""
-I1009 12:35:49.366825       1 flags.go:64] FLAG: --write-config-to=""
-I1009 12:35:49.600984       1 serving.go:380] Generated self-signed cert in-memory
-W1009 12:35:49.601458       1 client_config.go:659] Neither --kubeconfig nor --master was specified.  Using the inClusterConfig.  This might not work.
-I1009 12:35:50.081059       1 topologyscheduler.go:122] "TopologyScheduling: Initializing plugin"
-I1009 12:35:50.081170       1 networkscheduling.go:186] "NetworkScheduling: Initializing plugin"
-I1009 12:35:50.081894       1 server.go:154] "Starting Kubernetes Scheduler" version="v0.0.20241009"
-I1009 12:35:50.081920       1 server.go:156] "Golang settings" GOGC="" GOMAXPROCS="" GOTRACEBACK=""
-I1009 12:35:50.085035       1 requestheader_controller.go:169] Starting RequestHeaderAuthRequestController
-I1009 12:35:50.085060       1 shared_informer.go:313] Waiting for caches to sync for RequestHeaderAuthRequestController
-I1009 12:35:50.085056       1 configmap_cafile_content.go:202] "Starting controller" name="client-ca::kube-system::extension-apiserver-authentication::client-ca-file"
-I1009 12:35:50.085080       1 shared_informer.go:313] Waiting for caches to sync for client-ca::kube-system::extension-apiserver-authentication::client-ca-file
-I1009 12:35:50.085080       1 configmap_cafile_content.go:202] "Starting controller" name="client-ca::kube-system::extension-apiserver-authentication::requestheader-client-ca-file"
-I1009 12:35:50.085094       1 shared_informer.go:313] Waiting for caches to sync for client-ca::kube-system::extension-apiserver-authentication::requestheader-client-ca-file
-I1009 12:35:50.085133       1 secure_serving.go:213] Serving securely on [::]:10259
-I1009 12:35:50.085187       1 tlsconfig.go:240] "Starting DynamicServingCertificateController"
-I1009 12:35:50.091990       1 topologyscheduler.go:35] "TopologyScheduling: QueueSort called" pod1="deploy2-745cd94cfc-2j9rw" pod2="deploy1-7bf65ddf-xk69z"
-I1009 12:35:50.092027       1 topologyscheduler.go:48] "TopologyScheduling: QueueSort: Pods have resource label" pod1="deploy2-745cd94cfc-2j9rw" Resource1="mid-layer" pod2="deploy1-7bf65ddf-xk69z" Resource2="bottom-layer"
-I1009 12:35:50.094167       1 topologyscheduler.go:70] "TopologyScheduling: QueueSort: Got order level" order1=2 order2=1
-I1009 12:35:50.185763       1 shared_informer.go:320] Caches are synced for RequestHeaderAuthRequestController
-I1009 12:35:50.185810       1 shared_informer.go:320] Caches are synced for client-ca::kube-system::extension-apiserver-authentication::client-ca-file
-I1009 12:35:50.185764       1 shared_informer.go:320] Caches are synced for client-ca::kube-system::extension-apiserver-authentication::requestheader-client-ca-file
-I1009 12:35:50.186022       1 topologyscheduler.go:81] "TopologyScheduling: PreFilter called" pod="default/deploy1-7bf65ddf-xk69z"
-I1009 12:35:50.194652       1 topologyscheduler.go:111] "TopologyScheduling: PreFilter: All steps started before current pod order. Good to go"
-I1009 12:35:50.194739       1 networkscheduling.go:32] "NetworkScheduling: Filter called" pod="deploy1-7bf65ddf-xk69z" node="kind-worker"
-I1009 12:35:50.194772       1 networkscheduling.go:32] "NetworkScheduling: Filter called" pod="deploy1-7bf65ddf-xk69z" node="kind-worker3"
-I1009 12:35:50.194798       1 networkscheduling.go:32] "NetworkScheduling: Filter called" pod="deploy1-7bf65ddf-xk69z" node="kind-worker4"
-I1009 12:35:50.194770       1 networkscheduling.go:32] "NetworkScheduling: Filter called" pod="deploy1-7bf65ddf-xk69z" node="kind-worker2"
-I1009 12:35:50.196788       1 networkscheduling.go:93] "NetworkScheduling: Score called" pod="deploy1-7bf65ddf-xk69z" node="kind-worker4"
-I1009 12:35:50.196810       1 networkscheduling.go:93] "NetworkScheduling: Score called" pod="deploy1-7bf65ddf-xk69z" node="kind-worker"
-I1009 12:35:50.196830       1 networkscheduling.go:93] "NetworkScheduling: Score called" pod="deploy1-7bf65ddf-xk69z" node="kind-worker3"
-I1009 12:35:50.196855       1 networkscheduling.go:93] "NetworkScheduling: Score called" pod="deploy1-7bf65ddf-xk69z" node="kind-worker2"
-I1009 12:35:50.198307       1 networkscheduling.go:99] "NetworkScheduling: Score: aaa"
-I1009 12:35:50.198339       1 networkscheduling.go:99] "NetworkScheduling: Score: aaa"
-I1009 12:35:50.198332       1 networkscheduling.go:105] "NetworkScheduling: Score: bbb" workloadStatus={"Resource":["bottom-layer","mid-layer","top-layer"],"Order":[1,2,3],"Phase":["Pending","Pending","Not scheduled"],"SchedulingInfo":[{"PodName":"deploy1-7bf65ddf-xk69z","NodeName":""},{"PodName":"deploy2-745cd94cfc-2j9rw","NodeName":""},{"PodName":"","NodeName":""}]}
-I1009 12:35:50.198348       1 networkscheduling.go:105] "NetworkScheduling: Score: bbb" workloadStatus={"Resource":["bottom-layer","mid-layer","top-layer"],"Order":[1,2,3],"Phase":["Pending","Pending","Not scheduled"],"SchedulingInfo":[{"PodName":"deploy1-7bf65ddf-xk69z","NodeName":""},{"PodName":"deploy2-745cd94cfc-2j9rw","NodeName":""},{"PodName":"","NodeName":""}]}
-I1009 12:35:50.198412       1 networkscheduling.go:99] "NetworkScheduling: Score: aaa"
-I1009 12:35:50.198435       1 networkscheduling.go:105] "NetworkScheduling: Score: bbb" workloadStatus={"Resource":["bottom-layer","mid-layer","top-layer"],"Order":[1,2,3],"Phase":["Pending","Pending","Not scheduled"],"SchedulingInfo":[{"PodName":"deploy1-7bf65ddf-xk69z","NodeName":""},{"PodName":"deploy2-745cd94cfc-2j9rw","NodeName":""},{"PodName":"","NodeName":""}]}
-I1009 12:35:50.198515       1 networkscheduling.go:99] "NetworkScheduling: Score: aaa"
-I1009 12:35:50.198538       1 networkscheduling.go:105] "NetworkScheduling: Score: bbb" workloadStatus={"Resource":["bottom-layer","mid-layer","top-layer"],"Order":[1,2,3],"Phase":["Pending","Pending","Not scheduled"],"SchedulingInfo":[{"PodName":"deploy1-7bf65ddf-xk69z","NodeName":""},{"PodName":"deploy2-745cd94cfc-2j9rw","NodeName":""},{"PodName":"","NodeName":""}]}
-I1009 12:35:50.198809       1 topologyscheduler.go:81] "TopologyScheduling: PreFilter called" pod="default/deploy2-745cd94cfc-2j9rw"
-I1009 12:35:50.200312       1 topologyscheduler.go:106] "TopologyScheduling: PreFilter: Pending until prev step starting" order=2 prevOrder=1
-I1009 12:36:05.250939       1 topologyscheduler.go:81] "TopologyScheduling: PreFilter called" pod="default/deploy1-7bf65ddf-2576v"
-I1009 12:36:05.253556       1 topologyscheduler.go:111] "TopologyScheduling: PreFilter: All steps started before current pod order. Good to go"
-I1009 12:36:05.253675       1 networkscheduling.go:32] "NetworkScheduling: Filter called" pod="deploy1-7bf65ddf-2576v" node="kind-worker2"
-I1009 12:36:05.253682       1 networkscheduling.go:32] "NetworkScheduling: Filter called" pod="deploy1-7bf65ddf-2576v" node="kind-worker"
-I1009 12:36:05.253740       1 networkscheduling.go:32] "NetworkScheduling: Filter called" pod="deploy1-7bf65ddf-2576v" node="kind-worker3"
-I1009 12:36:05.253761       1 networkscheduling.go:32] "NetworkScheduling: Filter called" pod="deploy1-7bf65ddf-2576v" node="kind-worker4"
-I1009 12:36:05.268859       1 networkscheduling.go:93] "NetworkScheduling: Score called" pod="deploy1-7bf65ddf-2576v" node="kind-worker2"
-I1009 12:36:05.268887       1 networkscheduling.go:93] "NetworkScheduling: Score called" pod="deploy1-7bf65ddf-2576v" node="kind-worker3"
-I1009 12:36:05.268962       1 networkscheduling.go:93] "NetworkScheduling: Score called" pod="deploy1-7bf65ddf-2576v" node="kind-worker4"
-I1009 12:36:05.270640       1 networkscheduling.go:93] "NetworkScheduling: Score called" pod="deploy1-7bf65ddf-2576v" node="kind-worker"
-I1009 12:36:05.271637       1 networkscheduling.go:99] "NetworkScheduling: Score: aaa"
-I1009 12:36:05.271662       1 networkscheduling.go:105] "NetworkScheduling: Score: bbb" workloadStatus={"Resource":["bottom-layer","mid-layer","top-layer"],"Order":[1,2,3],"Phase":["Running","Not scheduled","Not scheduled"],"SchedulingInfo":[{"PodName":"deploy1-7bf65ddf-xk69z","NodeName":"kind-worker4"},{"PodName":"","NodeName":""},{"PodName":"","NodeName":""}]}
-I1009 12:36:05.271698       1 networkscheduling.go:99] "NetworkScheduling: Score: aaa"
-I1009 12:36:05.271706       1 networkscheduling.go:105] "NetworkScheduling: Score: bbb" workloadStatus={"Resource":["bottom-layer","mid-layer","top-layer"],"Order":[1,2,3],"Phase":["Running","Not scheduled","Not scheduled"],"SchedulingInfo":[{"PodName":"deploy1-7bf65ddf-xk69z","NodeName":"kind-worker4"},{"PodName":"","NodeName":""},{"PodName":"","NodeName":""}]}
-I1009 12:36:05.289181       1 networkscheduling.go:99] "NetworkScheduling: Score: aaa"
-I1009 12:36:05.289222       1 networkscheduling.go:105] "NetworkScheduling: Score: bbb" workloadStatus={"Resource":["bottom-layer","mid-layer","top-layer"],"Order":[1,2,3],"Phase":["Running","Not scheduled","Not scheduled"],"SchedulingInfo":[{"PodName":"deploy1-7bf65ddf-2576v","NodeName":""},{"PodName":"","NodeName":""},{"PodName":"","NodeName":""}]}
-I1009 12:36:05.289181       1 networkscheduling.go:99] "NetworkScheduling: Score: aaa"
-I1009 12:36:05.289274       1 networkscheduling.go:105] "NetworkScheduling: Score: bbb" workloadStatus={"Resource":["bottom-layer","mid-layer","top-layer"],"Order":[1,2,3],"Phase":["Running","Not scheduled","Not scheduled"],"SchedulingInfo":[{"PodName":"deploy1-7bf65ddf-2576v","NodeName":""},{"PodName":"","NodeName":""},{"PodName":"","NodeName":""}]}
-I1009 12:37:02.033000       1 topologyscheduler.go:81] "TopologyScheduling: PreFilter called" pod="default/deploy2-745cd94cfc-c6kkf"
-I1009 12:37:02.036259       1 topologyscheduler.go:111] "TopologyScheduling: PreFilter: All steps started before current pod order. Good to go"
-I1009 12:37:02.036373       1 networkscheduling.go:32] "NetworkScheduling: Filter called" pod="deploy2-745cd94cfc-c6kkf" node="kind-worker"
-I1009 12:37:02.036386       1 networkscheduling.go:32] "NetworkScheduling: Filter called" pod="deploy2-745cd94cfc-c6kkf" node="kind-worker2"
-I1009 12:37:02.036445       1 networkscheduling.go:32] "NetworkScheduling: Filter called" pod="deploy2-745cd94cfc-c6kkf" node="kind-worker3"
-I1009 12:37:02.036493       1 networkscheduling.go:32] "NetworkScheduling: Filter called" pod="deploy2-745cd94cfc-c6kkf" node="kind-worker4"
-I1009 12:37:02.139000       1 networkscheduling.go:83] "NetworkScheduling: Filter: Latency too high" pod="deploy2-745cd94cfc-c6kkf" node="kind-worker3" limit bandwidth=100 limit latency=10 cur bandwidth=115.3 cur latency=11.5
-I1009 12:37:02.139057       1 networkscheduling.go:83] "NetworkScheduling: Filter: Latency too high" pod="deploy2-745cd94cfc-c6kkf" node="kind-worker2" limit bandwidth=100 limit latency=10 cur bandwidth=120.5 cur latency=10.3
-I1009 12:37:02.139076       1 networkscheduling.go:87] "NetworkScheduling: Filter: Insufficient bandwidth" pod="deploy2-745cd94cfc-c6kkf" node="kind-worker" limit bandwidth=100 limit latency=10 cur bandwidth=0 cur latency=0
-I1009 12:37:02.139192       1 networkscheduling.go:80] "NetworkScheduling: Filter: network satisfied" pod="deploy2-745cd94cfc-c6kkf" node="kind-worker4" limit bandwidth=100 limit latency=10 cur bandwidth=110.8 cur latency=9.8
-I1009 12:37:02.139280       1 trace.go:236] Trace[746600884]: "Scheduling" namespace:default,name:deploy2-745cd94cfc-c6kkf (09-Oct-2024 12:37:02.032) (total time: 106ms):
-Trace[746600884]: ---"Computing predicates done" 106ms (12:37:02.139)
-Trace[746600884]: [106.383079ms] [106.383079ms] END
-I1009 12:43:27.780672       1 topologyscheduler.go:81] "TopologyScheduling: PreFilter called" pod="default/deploy2-745cd94cfc-f7tsk"
-I1009 12:43:27.784156       1 topologyscheduler.go:111] "TopologyScheduling: PreFilter: All steps started before current pod order. Good to go"
-I1009 12:43:27.784301       1 networkscheduling.go:32] "NetworkScheduling: Filter called" pod="deploy2-745cd94cfc-f7tsk" node="kind-worker"
-I1009 12:43:27.784315       1 networkscheduling.go:32] "NetworkScheduling: Filter called" pod="deploy2-745cd94cfc-f7tsk" node="kind-worker2"
-I1009 12:43:27.784348       1 networkscheduling.go:32] "NetworkScheduling: Filter called" pod="deploy2-745cd94cfc-f7tsk" node="kind-worker3"
-I1009 12:43:27.784382       1 networkscheduling.go:32] "NetworkScheduling: Filter called" pod="deploy2-745cd94cfc-f7tsk" node="kind-worker4"
-I1009 12:43:27.796902       1 networkscheduling.go:83] "NetworkScheduling: Filter: Latency too high" pod="deploy2-745cd94cfc-f7tsk" node="kind-worker3" limit bandwidth=100 limit latency=10 cur bandwidth=115.3 cur latency=11.5
-I1009 12:43:27.796902       1 networkscheduling.go:83] "NetworkScheduling: Filter: Latency too high" pod="deploy2-745cd94cfc-f7tsk" node="kind-worker2" limit bandwidth=100 limit latency=10 cur bandwidth=120.5 cur latency=10.3
-I1009 12:43:27.797152       1 networkscheduling.go:87] "NetworkScheduling: Filter: Insufficient bandwidth" pod="deploy2-745cd94cfc-f7tsk" node="kind-worker" limit bandwidth=100 limit latency=10 cur bandwidth=0 cur latency=0
-I1009 12:43:27.797170       1 networkscheduling.go:80] "NetworkScheduling: Filter: network satisfied" pod="deploy2-745cd94cfc-f7tsk" node="kind-worker4" limit bandwidth=100 limit latency=10 cur bandwidth=110.8 cur latency=9.8
-I1009 12:45:15.892851       1 topologyscheduler.go:81] "TopologyScheduling: PreFilter called" pod="default/deploy2-745cd94cfc-xdlkx"
-I1009 12:45:15.896023       1 topologyscheduler.go:111] "TopologyScheduling: PreFilter: All steps started before current pod order. Good to go"
-I1009 12:45:15.896134       1 networkscheduling.go:32] "NetworkScheduling: Filter called" pod="deploy2-745cd94cfc-xdlkx" node="kind-worker"
-I1009 12:45:15.896210       1 networkscheduling.go:32] "NetworkScheduling: Filter called" pod="deploy2-745cd94cfc-xdlkx" node="kind-worker2"
-I1009 12:45:15.896220       1 networkscheduling.go:32] "NetworkScheduling: Filter called" pod="deploy2-745cd94cfc-xdlkx" node="kind-worker3"
-I1009 12:45:15.896275       1 networkscheduling.go:32] "NetworkScheduling: Filter called" pod="deploy2-745cd94cfc-xdlkx" node="kind-worker4"
-I1009 12:45:15.909374       1 networkscheduling.go:87] "NetworkScheduling: Filter: Insufficient bandwidth" pod="deploy2-745cd94cfc-xdlkx" node="kind-worker" limit bandwidth=100 limit latency=15 cur bandwidth=0 cur latency=0
-I1009 12:45:15.914250       1 networkscheduling.go:80] "NetworkScheduling: Filter: network satisfied" pod="deploy2-745cd94cfc-xdlkx" node="kind-worker4" limit bandwidth=100 limit latency=15 cur bandwidth=110.8 cur latency=9.8
-I1009 12:45:15.914248       1 networkscheduling.go:80] "NetworkScheduling: Filter: network satisfied" pod="deploy2-745cd94cfc-xdlkx" node="kind-worker3" limit bandwidth=100 limit latency=15 cur bandwidth=115.3 cur latency=11.5
-I1009 12:45:15.914325       1 networkscheduling.go:80] "NetworkScheduling: Filter: network satisfied" pod="deploy2-745cd94cfc-xdlkx" node="kind-worker2" limit bandwidth=100 limit latency=15 cur bandwidth=120.5 cur latency=10.3
-I1009 12:45:15.914595       1 networkscheduling.go:93] "NetworkScheduling: Score called" pod="deploy2-745cd94cfc-xdlkx" node="kind-worker4"
-I1009 12:45:15.914649       1 networkscheduling.go:93] "NetworkScheduling: Score called" pod="deploy2-745cd94cfc-xdlkx" node="kind-worker3"
-I1009 12:45:15.914681       1 networkscheduling.go:93] "NetworkScheduling: Score called" pod="deploy2-745cd94cfc-xdlkx" node="kind-worker2"
-I1009 12:45:16.000210       1 networkscheduling.go:99] "NetworkScheduling: Score: aaa"
-I1009 12:45:16.000226       1 networkscheduling.go:105] "NetworkScheduling: Score: bbb" workloadStatus={"Resource":["bottom-layer","mid-layer","top-layer"],"Order":[1,2,3],"Phase":["Running","Pending","Not scheduled"],"SchedulingInfo":[{"PodName":"deploy1-7bf65ddf-2576v","NodeName":"kind-worker"},{"PodName":"deploy2-745cd94cfc-xdlkx","NodeName":""},{"PodName":"","NodeName":""}]}
-I1009 12:45:16.000245       1 networkscheduling.go:116] "NetworkScheduling: Score: ccc"
-I1009 12:45:16.000253       1 networkscheduling.go:127] "NetworkScheduling: Score: ddd"
-I1009 12:45:16.000213       1 networkscheduling.go:99] "NetworkScheduling: Score: aaa"
-I1009 12:45:16.000260       1 networkscheduling.go:105] "NetworkScheduling: Score: bbb" workloadStatus={"Resource":["bottom-layer","mid-layer","top-layer"],"Order":[1,2,3],"Phase":["Running","Pending","Not scheduled"],"SchedulingInfo":[{"PodName":"deploy1-7bf65ddf-2576v","NodeName":"kind-worker"},{"PodName":"deploy2-745cd94cfc-xdlkx","NodeName":""},{"PodName":"","NodeName":""}]}
-I1009 12:45:16.000268       1 networkscheduling.go:116] "NetworkScheduling: Score: ccc"
-I1009 12:45:16.000272       1 networkscheduling.go:127] "NetworkScheduling: Score: ddd"
-I1009 12:45:16.000246       1 networkscheduling.go:99] "NetworkScheduling: Score: aaa"
-I1009 12:45:16.000362       1 networkscheduling.go:105] "NetworkScheduling: Score: bbb" workloadStatus={"Resource":["bottom-layer","mid-layer","top-layer"],"Order":[1,2,3],"Phase":["Running","Pending","Not scheduled"],"SchedulingInfo":[{"PodName":"deploy1-7bf65ddf-2576v","NodeName":"kind-worker"},{"PodName":"deploy2-745cd94cfc-xdlkx","NodeName":""},{"PodName":"","NodeName":""}]}
-I1009 12:45:16.000370       1 networkscheduling.go:116] "NetworkScheduling: Score: ccc"
-I1009 12:45:16.000374       1 networkscheduling.go:127] "NetworkScheduling: Score: ddd"
-I1009 12:45:16.002075       1 networkscheduling.go:134] "NetworkScheduling: Score: eee"
-I1009 12:45:16.002115       1 networkscheduling.go:143] "NetworkScheduling: Score: fff"
-I1009 12:45:16.002124       1 networkscheduling.go:155] "NetworkScheduling: Score: ggg"
-I1009 12:45:16.002130       1 networkscheduling.go:169] "NetworkScheduling: Score: Node scored" pod="deploy2-745cd94cfc-xdlkx" node="kind-worker3" score=40 curBandwidth=115.3 limitBandwidth=100
-I1009 12:45:16.002223       1 networkscheduling.go:134] "NetworkScheduling: Score: eee"
-I1009 12:45:16.002269       1 networkscheduling.go:143] "NetworkScheduling: Score: fff"
-I1009 12:45:16.002291       1 networkscheduling.go:155] "NetworkScheduling: Score: ggg"
-I1009 12:45:16.002298       1 networkscheduling.go:169] "NetworkScheduling: Score: Node scored" pod="deploy2-745cd94cfc-xdlkx" node="kind-worker2" score=44 curBandwidth=120.5 limitBandwidth=100
-I1009 12:45:16.002224       1 networkscheduling.go:134] "NetworkScheduling: Score: eee"
-I1009 12:45:16.002335       1 networkscheduling.go:143] "NetworkScheduling: Score: fff"
-I1009 12:45:16.002341       1 networkscheduling.go:155] "NetworkScheduling: Score: ggg"
-I1009 12:45:16.002346       1 networkscheduling.go:169] "NetworkScheduling: Score: Node scored" pod="deploy2-745cd94cfc-xdlkx" node="kind-worker4" score=37 curBandwidth=110.8 limitBandwidth=100
-I1009 12:45:16.002466       1 trace.go:236] Trace[1260034674]: "Scheduling" namespace:default,name:deploy2-745cd94cfc-xdlkx (09-Oct-2024 12:45:15.892) (total time: 109ms):
-Trace[1260034674]: ---"Prioritizing done" 88ms (12:45:16.002)
-Trace[1260034674]: [109.709501ms] [109.709501ms] END
-I1009 12:47:17.256634       1 topologyscheduler.go:81] "TopologyScheduling: PreFilter called" pod="default/deploy3-54d8599cb5-l7cvd"
-I1009 12:47:17.260007       1 topologyscheduler.go:111] "TopologyScheduling: PreFilter: All steps started before current pod order. Good to go"
-I1009 12:47:17.260096       1 networkscheduling.go:32] "NetworkScheduling: Filter called" pod="deploy3-54d8599cb5-l7cvd" node="kind-worker"
-I1009 12:47:17.260111       1 networkscheduling.go:32] "NetworkScheduling: Filter called" pod="deploy3-54d8599cb5-l7cvd" node="kind-worker2"
-I1009 12:47:17.260158       1 networkscheduling.go:32] "NetworkScheduling: Filter called" pod="deploy3-54d8599cb5-l7cvd" node="kind-worker3"
-I1009 12:47:17.260157       1 networkscheduling.go:32] "NetworkScheduling: Filter called" pod="deploy3-54d8599cb5-l7cvd" node="kind-worker4"
-I1009 12:47:17.273849       1 networkscheduling.go:80] "NetworkScheduling: Filter: network satisfied" pod="deploy3-54d8599cb5-l7cvd" node="kind-worker3" limit bandwidth=50 limit latency=15 cur bandwidth=130.7 cur latency=12.1
-I1009 12:47:17.273895       1 networkscheduling.go:80] "NetworkScheduling: Filter: network satisfied" pod="deploy3-54d8599cb5-l7cvd" node="kind-worker" limit bandwidth=50 limit latency=15 cur bandwidth=120.5 cur latency=10.3
-I1009 12:47:17.274094       1 networkscheduling.go:87] "NetworkScheduling: Filter: Insufficient bandwidth" pod="deploy3-54d8599cb5-l7cvd" node="kind-worker2" limit bandwidth=50 limit latency=15 cur bandwidth=0 cur latency=0
-I1009 12:47:17.274136       1 networkscheduling.go:80] "NetworkScheduling: Filter: network satisfied" pod="deploy3-54d8599cb5-l7cvd" node="kind-worker4" limit bandwidth=50 limit latency=15 cur bandwidth=125.4 cur latency=11.2
-I1009 12:47:17.274457       1 networkscheduling.go:93] "NetworkScheduling: Score called" pod="deploy3-54d8599cb5-l7cvd" node="kind-worker3"
-I1009 12:47:17.274616       1 networkscheduling.go:93] "NetworkScheduling: Score called" pod="deploy3-54d8599cb5-l7cvd" node="kind-worker"
-I1009 12:47:17.274700       1 networkscheduling.go:93] "NetworkScheduling: Score called" pod="deploy3-54d8599cb5-l7cvd" node="kind-worker4"
-I1009 12:47:17.360935       1 networkscheduling.go:99] "NetworkScheduling: Score: aaa"
-I1009 12:47:17.360955       1 networkscheduling.go:105] "NetworkScheduling: Score: bbb" workloadStatus={"Resource":["bottom-layer","mid-layer","top-layer"],"Order":[1,2,3],"Phase":["Running","Running","Pending"],"SchedulingInfo":[{"PodName":"deploy1-7bf65ddf-2576v","NodeName":"kind-worker"},{"PodName":"deploy2-745cd94cfc-xdlkx","NodeName":"kind-worker2"},{"PodName":"deploy3-54d8599cb5-l7cvd","NodeName":""}]}
-I1009 12:47:17.360966       1 networkscheduling.go:116] "NetworkScheduling: Score: ccc"
-I1009 12:47:17.360970       1 networkscheduling.go:127] "NetworkScheduling: Score: ddd"
-I1009 12:47:17.361008       1 networkscheduling.go:99] "NetworkScheduling: Score: aaa"
-I1009 12:47:17.361015       1 networkscheduling.go:105] "NetworkScheduling: Score: bbb" workloadStatus={"Resource":["bottom-layer","mid-layer","top-layer"],"Order":[1,2,3],"Phase":["Running","Running","Pending"],"SchedulingInfo":[{"PodName":"deploy1-7bf65ddf-2576v","NodeName":"kind-worker"},{"PodName":"deploy2-745cd94cfc-xdlkx","NodeName":"kind-worker2"},{"PodName":"deploy3-54d8599cb5-l7cvd","NodeName":""}]}
-I1009 12:47:17.361022       1 networkscheduling.go:116] "NetworkScheduling: Score: ccc"
-I1009 12:47:17.361026       1 networkscheduling.go:127] "NetworkScheduling: Score: ddd"
-I1009 12:47:17.361394       1 networkscheduling.go:99] "NetworkScheduling: Score: aaa"
-I1009 12:47:17.361417       1 networkscheduling.go:105] "NetworkScheduling: Score: bbb" workloadStatus={"Resource":["bottom-layer","mid-layer","top-layer"],"Order":[1,2,3],"Phase":["Running","Running","Pending"],"SchedulingInfo":[{"PodName":"deploy1-7bf65ddf-2576v","NodeName":"kind-worker"},{"PodName":"deploy2-745cd94cfc-xdlkx","NodeName":"kind-worker2"},{"PodName":"deploy3-54d8599cb5-l7cvd","NodeName":""}]}
-I1009 12:47:17.361425       1 networkscheduling.go:116] "NetworkScheduling: Score: ccc"
-I1009 12:47:17.361430       1 networkscheduling.go:127] "NetworkScheduling: Score: ddd"
-I1009 12:47:17.362914       1 networkscheduling.go:134] "NetworkScheduling: Score: eee"
-I1009 12:47:17.362933       1 networkscheduling.go:143] "NetworkScheduling: Score: fff"
-I1009 12:47:17.362939       1 networkscheduling.go:155] "NetworkScheduling: Score: ggg"
-I1009 12:47:17.362944       1 networkscheduling.go:169] "NetworkScheduling: Score: Node scored" pod="deploy3-54d8599cb5-l7cvd" node="kind-worker3" score=58 curBandwidth=130.7 limitBandwidth=50
-I1009 12:47:17.362989       1 networkscheduling.go:134] "NetworkScheduling: Score: eee"
-I1009 12:47:17.363000       1 networkscheduling.go:143] "NetworkScheduling: Score: fff"
-I1009 12:47:17.363008       1 networkscheduling.go:155] "NetworkScheduling: Score: ggg"
-I1009 12:47:17.363018       1 networkscheduling.go:169] "NetworkScheduling: Score: Node scored" pod="deploy3-54d8599cb5-l7cvd" node="kind-worker" score=54 curBandwidth=120.5 limitBandwidth=50
-I1009 12:47:17.363000       1 networkscheduling.go:134] "NetworkScheduling: Score: eee"
-I1009 12:47:17.363058       1 networkscheduling.go:143] "NetworkScheduling: Score: fff"
-I1009 12:47:17.363067       1 networkscheduling.go:155] "NetworkScheduling: Score: ggg"
-I1009 12:47:17.363071       1 networkscheduling.go:169] "NetworkScheduling: Score: Node scored" pod="deploy3-54d8599cb5-l7cvd" node="kind-worker4" score=56 curBandwidth=125.4 limitBandwidth=50
-I1009 12:47:17.363147       1 trace.go:236] Trace[33999829]: "Scheduling" namespace:default,name:deploy3-54d8599cb5-l7cvd (09-Oct-2024 12:47:17.256) (total time: 106ms):
-Trace[33999829]: ---"Prioritizing done" 88ms (12:47:17.363)
-Trace[33999829]: [106.661773ms] [106.661773ms] END
+I1010 07:18:17.987158       1 flags.go:64] FLAG: --allow-metric-labels="[]"
+I1010 07:18:17.987244       1 flags.go:64] FLAG: --allow-metric-labels-manifest=""
+I1010 07:18:17.987250       1 flags.go:64] FLAG: --authentication-kubeconfig=""
+I1010 07:18:17.987252       1 flags.go:64] FLAG: --authentication-skip-lookup="false"
+I1010 07:18:17.987255       1 flags.go:64] FLAG: --authentication-token-webhook-cache-ttl="10s"
+I1010 07:18:17.987259       1 flags.go:64] FLAG: --authentication-tolerate-lookup-failure="true"
+I1010 07:18:17.987261       1 flags.go:64] FLAG: --authorization-always-allow-paths="[/healthz,/readyz,/livez]"
+I1010 07:18:17.987268       1 flags.go:64] FLAG: --authorization-kubeconfig=""
+I1010 07:18:17.987270       1 flags.go:64] FLAG: --authorization-webhook-cache-authorized-ttl="10s"
+I1010 07:18:17.987272       1 flags.go:64] FLAG: --authorization-webhook-cache-unauthorized-ttl="10s"
+I1010 07:18:17.987274       1 flags.go:64] FLAG: --bind-address="0.0.0.0"
+I1010 07:18:17.987276       1 flags.go:64] FLAG: --cert-dir=""
+I1010 07:18:17.987278       1 flags.go:64] FLAG: --client-ca-file=""
+I1010 07:18:17.987280       1 flags.go:64] FLAG: --config="/etc/kubernetes/scheduler-config.yaml"
+I1010 07:18:17.987282       1 flags.go:64] FLAG: --contention-profiling="true"
+I1010 07:18:17.987284       1 flags.go:64] FLAG: --disabled-metrics="[]"
+I1010 07:18:17.987287       1 flags.go:64] FLAG: --feature-gates=""
+I1010 07:18:17.987291       1 flags.go:64] FLAG: --help="false"
+I1010 07:18:17.987293       1 flags.go:64] FLAG: --http2-max-streams-per-connection="0"
+I1010 07:18:17.987295       1 flags.go:64] FLAG: --kube-api-burst="100"
+I1010 07:18:17.987298       1 flags.go:64] FLAG: --kube-api-content-type="application/vnd.kubernetes.protobuf"
+I1010 07:18:17.987300       1 flags.go:64] FLAG: --kube-api-qps="50"
+I1010 07:18:17.987303       1 flags.go:64] FLAG: --kubeconfig=""
+I1010 07:18:17.987305       1 flags.go:64] FLAG: --leader-elect="true"
+I1010 07:18:17.987307       1 flags.go:64] FLAG: --leader-elect-lease-duration="15s"
+I1010 07:18:17.987310       1 flags.go:64] FLAG: --leader-elect-renew-deadline="10s"
+I1010 07:18:17.987311       1 flags.go:64] FLAG: --leader-elect-resource-lock="leases"
+I1010 07:18:17.987313       1 flags.go:64] FLAG: --leader-elect-resource-name="kube-scheduler"
+I1010 07:18:17.987315       1 flags.go:64] FLAG: --leader-elect-resource-namespace="kube-system"
+I1010 07:18:17.987317       1 flags.go:64] FLAG: --leader-elect-retry-period="2s"
+I1010 07:18:17.987319       1 flags.go:64] FLAG: --log-flush-frequency="5s"
+I1010 07:18:17.987321       1 flags.go:64] FLAG: --log-text-info-buffer-size="0"
+I1010 07:18:17.987351       1 flags.go:64] FLAG: --log-text-split-stream="false"
+I1010 07:18:17.987356       1 flags.go:64] FLAG: --logging-format="text"
+I1010 07:18:17.987358       1 flags.go:64] FLAG: --master=""
+I1010 07:18:17.987360       1 flags.go:64] FLAG: --permit-address-sharing="false"
+I1010 07:18:17.987365       1 flags.go:64] FLAG: --permit-port-sharing="false"
+I1010 07:18:17.987367       1 flags.go:64] FLAG: --pod-max-in-unschedulable-pods-duration="5m0s"
+I1010 07:18:17.987370       1 flags.go:64] FLAG: --profiling="true"
+I1010 07:18:17.987371       1 flags.go:64] FLAG: --requestheader-allowed-names="[]"
+I1010 07:18:17.987382       1 flags.go:64] FLAG: --requestheader-client-ca-file=""
+I1010 07:18:17.987384       1 flags.go:64] FLAG: --requestheader-extra-headers-prefix="[x-remote-extra-]"
+I1010 07:18:17.987390       1 flags.go:64] FLAG: --requestheader-group-headers="[x-remote-group]"
+I1010 07:18:17.987395       1 flags.go:64] FLAG: --requestheader-username-headers="[x-remote-user]"
+I1010 07:18:17.987419       1 flags.go:64] FLAG: --secure-port="10259"
+I1010 07:18:17.987425       1 flags.go:64] FLAG: --show-hidden-metrics-for-version=""
+I1010 07:18:17.987428       1 flags.go:64] FLAG: --tls-cert-file=""
+I1010 07:18:17.987431       1 flags.go:64] FLAG: --tls-cipher-suites="[]"
+I1010 07:18:17.987437       1 flags.go:64] FLAG: --tls-min-version=""
+I1010 07:18:17.987439       1 flags.go:64] FLAG: --tls-private-key-file=""
+I1010 07:18:17.987441       1 flags.go:64] FLAG: --tls-sni-cert-key="[]"
+I1010 07:18:17.987462       1 flags.go:64] FLAG: --v="1"
+I1010 07:18:17.987467       1 flags.go:64] FLAG: --version="false"
+I1010 07:18:17.987474       1 flags.go:64] FLAG: --vmodule=""
+I1010 07:18:17.987477       1 flags.go:64] FLAG: --write-config-to=""
+I1010 07:18:18.259970       1 serving.go:380] Generated self-signed cert in-memory
+W1010 07:18:18.260573       1 client_config.go:659] Neither --kubeconfig nor --master was specified.  Using the inClusterConfig.  This might not work.
+I1010 07:18:18.834619       1 topologyscheduler.go:234] "TopologyScheduling: Initializing plugin"
+I1010 07:18:18.835448       1 server.go:154] "Starting Kubernetes Scheduler" version="v0.0.20241010"
+I1010 07:18:18.835480       1 server.go:156] "Golang settings" GOGC="" GOMAXPROCS="" GOTRACEBACK=""
+I1010 07:18:18.839044       1 requestheader_controller.go:169] Starting RequestHeaderAuthRequestController
+I1010 07:18:18.839091       1 shared_informer.go:313] Waiting for caches to sync for RequestHeaderAuthRequestController
+I1010 07:18:18.839122       1 secure_serving.go:213] Serving securely on [::]:10259
+I1010 07:18:18.839154       1 configmap_cafile_content.go:202] "Starting controller" name="client-ca::kube-system::extension-apiserver-authentication::requestheader-client-ca-file"
+I1010 07:18:18.839166       1 shared_informer.go:313] Waiting for caches to sync for client-ca::kube-system::extension-apiserver-authentication::requestheader-client-ca-file
+I1010 07:18:18.839157       1 configmap_cafile_content.go:202] "Starting controller" name="client-ca::kube-system::extension-apiserver-authentication::client-ca-file"
+I1010 07:18:18.839178       1 shared_informer.go:313] Waiting for caches to sync for client-ca::kube-system::extension-apiserver-authentication::client-ca-file
+I1010 07:18:18.839181       1 tlsconfig.go:240] "Starting DynamicServingCertificateController"
+I1010 07:18:18.939918       1 shared_informer.go:320] Caches are synced for client-ca::kube-system::extension-apiserver-authentication::requestheader-client-ca-file
+I1010 07:18:18.939927       1 shared_informer.go:320] Caches are synced for RequestHeaderAuthRequestController
+I1010 07:18:18.939955       1 shared_informer.go:320] Caches are synced for client-ca::kube-system::extension-apiserver-authentication::client-ca-file
+I1010 07:18:28.324513       1 topologyscheduler.go:113] "TopologyScheduling: PreFilter: got CRD Info" spec=[{"resource":"top-layer","dependencies":[{"resource":"mid-layer","bandwidth":{"requests":250,"limits":50},"latency":{"requests":5,"limits":15}}]},{"resource":"mid-layer","dependencies":[{"resource":"bottom-layer","bandwidth":{"requests":200,"limits":100},"latency":{"requests":10,"limits":15}}]},{"resource":"bottom-layer"}] status=[{"Resource":"bottom-layer","Order":1,"Phase":"Not scheduled","SchedulingInfo":null},{"Resource":"mid-layer","Order":2,"Phase":"Not scheduled","SchedulingInfo":null},{"Resource":"top-layer","Order":3,"Phase":"Not scheduled","SchedulingInfo":null}]
+I1010 07:18:28.324966       1 topologyscheduler.go:133] "TopologyScheduling: PreFilter: get Node used" node="kind-worker" allocatable=1
+I1010 07:18:28.325096       1 topologyscheduler.go:133] "TopologyScheduling: PreFilter: get Node used" node="kind-worker2" allocatable=1
+I1010 07:18:28.325143       1 topologyscheduler.go:133] "TopologyScheduling: PreFilter: get Node used" node="kind-worker3" allocatable=1
+I1010 07:18:28.325169       1 topologyscheduler.go:133] "TopologyScheduling: PreFilter: get Node used" node="kind-worker4" allocatable=1
+I1010 07:18:28.379500       1 topologyscheduler.go:38] "TopologyScheduling: QueueSort called" pod1="deploy3-54d8599cb5-7z7rb" pod2="deploy2-745cd94cfc-lrqs6"
+I1010 07:18:28.379632       1 topologyscheduler.go:51] "TopologyScheduling: QueueSort: Pods have resource label" pod1="deploy3-54d8599cb5-7z7rb" Resource1="top-layer" pod2="deploy2-745cd94cfc-lrqs6" Resource2="mid-layer"
+I1010 07:18:28.379426       1 topologyscheduler.go:145] "TopologyScheduling: PreFilter: got network metrics" data={"Bandwidth":{"kind-worker":{"kind-worker2":120.5,"kind-worker3":115.3,"kind-worker4":110.8},"kind-worker2":{"kind-worker":120.5,"kind-worker3":130.7,"kind-worker4":125.4},"kind-worker3":{"kind-worker":115.3,"kind-worker2":130.7,"kind-worker4":118.9},"kind-worker4":{"kind-worker":110.8,"kind-worker2":125.4,"kind-worker3":118.9}},"Latency":{"kind-worker":{"kind-worker2":10.3,"kind-worker3":11.5,"kind-worker4":9.8},"kind-worker2":{"kind-worker":10.3,"kind-worker3":12.1,"kind-worker4":11.2},"kind-worker3":{"kind-worker":11.5,"kind-worker2":12.1,"kind-worker4":10.9},"kind-worker4":{"kind-worker":9.8,"kind-worker2":11.2,"kind-worker3":10.9}}}
+I1010 07:18:28.380235       1 topologyscheduler.go:162] "TopologyScheduling: PreFilter: get dependencies" resourceList=["bottom-layer","mid-layer","top-layer"] dependencies=[[100,200,15,10],[50,250,15,5]]
+I1010 07:18:28.380304       1 topologyscheduler.go:165] "TopologyScheduling: PreFilter: got best node set" nodeSet=["kind-worker","kind-worker3","kind-worker4"] bestScore=-2995.25
+I1010 07:18:28.430558       1 topologyscheduler.go:73] "TopologyScheduling: QueueSort: Got order level" order1=3 order2=2
+I1010 07:18:28.430683       1 topologyscheduler.go:181] "TopologyScheduler: Filter called" pod="deploy1-7bf65ddf-ztbqf" node="kind-worker4"
+I1010 07:18:28.430707       1 topologyscheduler.go:181] "TopologyScheduler: Filter called" pod="deploy1-7bf65ddf-ztbqf" node="kind-worker"
+I1010 07:18:28.430719       1 topologyscheduler.go:181] "TopologyScheduler: Filter called" pod="deploy1-7bf65ddf-ztbqf" node="kind-worker3"
+I1010 07:18:28.430732       1 topologyscheduler.go:181] "TopologyScheduler: Filter called" pod="deploy1-7bf65ddf-ztbqf" node="kind-worker2"
+I1010 07:18:33.431164       1 topologyscheduler.go:221] error reading "PreFilterState" from cyclestate: <nil>, Waiting...
+I1010 07:18:33.431219       1 topologyscheduler.go:221] error reading "PreFilterState" from cyclestate: <nil>, Waiting...
+I1010 07:18:33.431225       1 topologyscheduler.go:221] error reading "PreFilterState" from cyclestate: <nil>, Waiting...
+I1010 07:18:33.431251       1 topologyscheduler.go:221] error reading "PreFilterState" from cyclestate: <nil>, Waiting...
+I1010 07:18:38.432071       1 topologyscheduler.go:221] error reading "PreFilterState" from cyclestate: <nil>, Waiting...
+I1010 07:18:38.432104       1 topologyscheduler.go:221] error reading "PreFilterState" from cyclestate: <nil>, Waiting...
+I1010 07:18:38.432123       1 topologyscheduler.go:221] error reading "PreFilterState" from cyclestate: <nil>, Waiting...
+I1010 07:18:38.432094       1 topologyscheduler.go:221] error reading "PreFilterState" from cyclestate: <nil>, Waiting...
+I1010 07:18:43.432883       1 topologyscheduler.go:221] error reading "PreFilterState" from cyclestate: <nil>, Waiting...
+I1010 07:18:43.432939       1 topologyscheduler.go:221] error reading "PreFilterState" from cyclestate: <nil>, Waiting...
+I1010 07:18:43.432917       1 topologyscheduler.go:221] error reading "PreFilterState" from cyclestate: <nil>, Waiting...
+I1010 07:18:43.432969       1 topologyscheduler.go:221] error reading "PreFilterState" from cyclestate: <nil>, Waiting...
+I1010 07:18:48.331500       1 topologyscheduler.go:221] error reading "PreFilterState" from cyclestate: <nil>, Waiting...
+I1010 07:18:48.331519       1 topologyscheduler.go:221] error reading "PreFilterState" from cyclestate: <nil>, Waiting...
+I1010 07:18:48.331530       1 topologyscheduler.go:221] error reading "PreFilterState" from cyclestate: <nil>, Waiting...
+I1010 07:18:48.331540       1 topologyscheduler.go:221] error reading "PreFilterState" from cyclestate: <nil>, Waiting...

@@ -16,7 +16,6 @@ spec:
     - resource: mid-layer
       dependencies:
         - resource: bottom-layer
-
           bandwidth:
             requests: 200
             limits: 100

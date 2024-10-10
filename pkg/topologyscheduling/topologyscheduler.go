@@ -3,6 +3,8 @@ package topologyscheduling
 import (
 	"context"
 	"fmt"
+	"math"
+	"time"
 
 	v1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/runtime"
@@ -24,6 +26,7 @@ type TopologyScheduling struct {
 
 var _ framework.QueueSortPlugin = &TopologyScheduling{}
 var _ framework.PreFilterPlugin = &TopologyScheduling{}
+var _ framework.FilterPlugin = &TopologyScheduling{}
 
 func (pl *TopologyScheduling) Name() string {
 	return Name
@@ -47,7 +50,7 @@ func (pl *TopologyScheduling) Less(podInfo1 *framework.QueuedPodInfo, podInfo2 *
 	}
 	klog.V(1).InfoS("TopologyScheduling: QueueSort: Pods have resource label", "pod1", pod1.Name, "Resource1", resource1, "pod2", pod2.Name, "Resource2", resource2)
 
-	workloadStatus, err := getDistributedJobStatus(pod1.Namespace)
+	_, workloadStatus, err := getDistributedJobWorkloads(pod1.Namespace)
 	if err != nil {
 		s := &queuesort.PrioritySort{}
 		return s.Less(podInfo1, podInfo2)
@@ -55,12 +58,12 @@ func (pl *TopologyScheduling) Less(podInfo1 *framework.QueuedPodInfo, podInfo2 *
 
 	var pod1Order = -1
 	var pod2Order = -1
-	for i, _ := range workloadStatus.Resource {
-		if resource1 == workloadStatus.Resource[i] {
-			pod1Order = workloadStatus.Order[i]
+	for _, workloadS := range workloadStatus {
+		if resource1 == workloadS.Resource {
+			pod1Order = workloadS.Order
 		}
-		if resource2 == workloadStatus.Resource[i] {
-			pod2Order = workloadStatus.Order[i]
+		if resource2 == workloadS.Resource {
+			pod2Order = workloadS.Order
 		}
 	}
 	if pod1Order == -1 || pod2Order == -1 {
@@ -77,44 +80,153 @@ func (pl *TopologyScheduling) Less(podInfo1 *framework.QueuedPodInfo, podInfo2 *
 	return s.Less(podInfo1, podInfo2)
 }
 
-func (pl *TopologyScheduling) PreFilter(ctx context.Context, state *framework.CycleState, pod *v1.Pod) (*framework.PreFilterResult, *framework.Status) {
-	klog.InfoS("TopologyScheduling: PreFilter called", "pod", klog.KObj(pod))
+// func temp (clientset *kubernetes.Clientset) {
+// 	podInformer := corev1informers.N
+// 	factory := corev1informers.NewSharedInformerFactory(clientset, 0)
+// }
 
+// nodes := pl.handle.SharedInformerFactory().Node()
+
+const stateKey framework.StateKey = "PreFilterState"
+
+type PreFilterState struct {
+	Data []string
+}
+
+// Clone implements framework.StateData.
+func (p *PreFilterState) Clone() framework.StateData {
+	copy := *p
+	return &copy
+}
+
+func (pl *TopologyScheduling) PreFilter(ctx context.Context, state *framework.CycleState, pod *v1.Pod) (*framework.PreFilterResult, *framework.Status) {
 	resource, exists := pod.Labels["resource"]
 	if !exists {
 		return &framework.PreFilterResult{}, framework.NewStatus(framework.Success, "")
 	}
 
-	workloadStatus, err := getDistributedJobStatus(pod.Namespace)
+	// Get DistributedJob info
+	workloadSpec, workloadStatus, err := getDistributedJobWorkloads(pod.Namespace)
 	if err != nil {
+		return nil, framework.NewStatus(framework.Error, fmt.Sprintf("failed to get DistributedJob CRD: %v", err))
+	}
+	klog.V(1).InfoS("TopologyScheduling: PreFilter: got CRD Info", "spec", workloadSpec, "status", workloadStatus)
+
+	var podOrder int
+	for _, workloadS := range workloadStatus {
+		if resource == workloadS.Resource {
+			podOrder = workloadS.Order - 1
+		}
+	}
+
+	if podOrder > 1 {
 		return &framework.PreFilterResult{}, framework.NewStatus(framework.Success, "")
 	}
-	var podOrder = -1
-	for i, _ := range workloadStatus.Resource {
-		if resource == workloadStatus.Resource[i] {
-			podOrder = workloadStatus.Order[i]
-			break
-		}
-	}
-	if podOrder == -1 {
-		klog.V(1).InfoS("TopologyScheduling: PreFilter: Unknown resource label", "resource", resource)
-		return &framework.PreFilterResult{}, framework.NewStatus(framework.UnschedulableAndUnresolvable, "")
-	}
 
-	for i, _ := range workloadStatus.Resource {
-		if workloadStatus.Order[i] < podOrder && workloadStatus.Phase[i] != "Running" && workloadStatus.Phase[i] != "Succeeded" {
-			klog.V(1).InfoS("TopologyScheduling: PreFilter: Pending until prev step starting", "order", podOrder, "prevOrder", workloadStatus.Order[i])
-			return nil, framework.NewStatus(framework.Unschedulable, "")
+	// Filter based on CPU using ratio (0.7)
+	nodes, err := pl.handle.SnapshotSharedLister().NodeInfos().List()
+	nodeList := []string{}
+	for _, node := range nodes {
+		if _, ok := node.Node().Labels["node-role.kubernetes.io/control-plane"]; !ok {
+			cpuCapacity := node.Node().Status.Capacity.Cpu().MilliValue()
+			cpuAllocatable := node.Node().Status.Allocatable.Cpu().MilliValue()
+			klog.V(1).InfoS("TopologyScheduling: PreFilter: get Node used", "node", node.Node().Name, "allocatable", float64(cpuAllocatable/cpuCapacity))
+			if float64(cpuAllocatable/cpuCapacity) > 0.7 {
+				nodeList = append(nodeList, node.Node().Name)
+			}
 		}
 	}
 
-	klog.V(1).InfoS("TopologyScheduling: PreFilter: All steps started before current pod order. Good to go")
+	// Get network cost
+	networkMetrics, err := getNetworkMetrics()
+	if err != nil {
+		return nil, framework.NewStatus(framework.Error, fmt.Sprintf("failed to get network metrics: %v", err))
+	}
+	klog.V(1).InfoS("TopologyScheduling: PreFilter: got network metrics", "data", networkMetrics)
+
+	resourceList := []string{}
+	for _, workloadS := range workloadStatus {
+		resourceList = append(resourceList, workloadS.Resource)
+	}
+
+	podRequirements := [][]float64{}
+	for _, resource := range resourceList {
+		for _, workload := range workloadSpec {
+			if resource == workload.Resource {
+				for _, dependency := range workload.Dependencies {
+					podRequirements = append(podRequirements, []float64{float64(dependency.Bandwidth.Limits), float64(dependency.Bandwidth.Requests), float64(dependency.Latency.Limits), float64(dependency.Latency.Requests)})
+				}
+			}
+		}
+	}
+	klog.V(1).InfoS("TopologyScheduling: PreFilter: get dependencies", "resourceList", resourceList, "dependencies", podRequirements)
+
+	nodeSet, score := getBestNodeSet(nodeList, networkMetrics, podRequirements, len(resourceList))
+	klog.V(1).InfoS("TopologyScheduling: PreFilter: got best node set", "nodeSet", nodeSet, "bestScore", score)
+
+	data := &PreFilterState{
+		Data: nodeSet,
+	}
+	state.Write(stateKey, data)
+
 	return &framework.PreFilterResult{}, framework.NewStatus(framework.Success, "")
 }
 
 // PreFilterExtensions returns prefilter extensions, pod add and remove.
 func (pl *TopologyScheduling) PreFilterExtensions() framework.PreFilterExtensions {
 	return nil
+}
+
+func (pl *TopologyScheduling) Filter(ctx context.Context, state *framework.CycleState, pod *v1.Pod, nodeInfo *framework.NodeInfo) *framework.Status {
+	klog.V(1).InfoS("TopologyScheduler: Filter called", "pod", pod.Name, "node", nodeInfo.Node().Name)
+
+	resource, exists := pod.Labels["resource"]
+	if !exists {
+		return framework.NewStatus(framework.Success, "")
+	}
+
+	data, err := getPreFilterState(state)
+	if err != nil {
+		return framework.NewStatus(framework.Error, fmt.Sprintf("error reading state: %v", err))
+	}
+
+	klog.V(1).InfoS("TopologyScheduler: Filter: read data from PreFilter", "data", data.Data)
+
+	_, workloadStatus, err := getDistributedJobWorkloads(pod.Namespace)
+	var podOrder int
+	for _, workloadS := range workloadStatus {
+		if resource == workloadS.Resource {
+			podOrder = workloadS.Order
+		}
+	}
+
+	if nodeInfo.Node().Name == data.Data[podOrder-1] {
+		klog.V(1).InfoS("TopologyScheduler: Filter: pod should be scheduled on current node", "pod", pod.Name, "order", podOrder+1, "node", nodeInfo.Node().Name)
+		return framework.NewStatus(framework.Success, "")
+	} else {
+		klog.V(1).InfoS("TopologyScheduler: Filter: filter current node", "pod", pod.Name, "order", podOrder, "node", nodeInfo.Node().Name)
+		return framework.NewStatus(framework.Unschedulable, "")
+	}
+}
+
+func getPreFilterState(state *framework.CycleState) (*PreFilterState, error) {
+	if state == nil {
+		return nil, fmt.Errorf("cycle state is nil")
+	}
+
+	s, err := state.Read(stateKey)
+	for err != nil {
+		time.Sleep(5 * time.Second)
+		s, err = state.Read(stateKey)
+		klog.V(1).Infof("error reading %q from cyclestate: %v, Waiting...", stateKey, err)
+	}
+
+	preFilterState, ok := s.(*PreFilterState)
+	if !ok {
+		return nil, fmt.Errorf("%+v convert to PreFilterState error", s)
+	}
+
+	return preFilterState, nil
 }
 
 // New initializes a new plugin and returns it.
@@ -129,13 +241,13 @@ func New(ctx context.Context, obj runtime.Object, h framework.Handle) (framework
 	}, nil
 }
 
-type WorkloadStatus struct {
-	Resource []string
-	Order    []int
-	Phase    []string
+// NetworkMetrics CRD: current bandwidth and latency
+type NetworkMetrics struct {
+	Bandwidth map[string]map[string]float64 // Map of worker -> peer -> bandwidth
+	Latency   map[string]map[string]float64 // Map of worker -> peer -> latency
 }
 
-func getDistributedJobStatus(namespace string) (*WorkloadStatus, error) {
+func getNetworkMetrics() (*NetworkMetrics, error) {
 	config, err := rest.InClusterConfig()
 	if err != nil {
 		klog.Errorf("Failed to create in-cluster config: %v", err)
@@ -149,41 +261,257 @@ func getDistributedJobStatus(namespace string) (*WorkloadStatus, error) {
 	}
 
 	gvr := schema.GroupVersionResource{
-		Group:    "batch.ddl.com",
+		Group:    "network.example.com",
 		Version:  "v1",
-		Resource: "distributedjobs",
+		Resource: "networkmetrics",
 	}
 
-	crd, err := dynamicClient.Resource(gvr).Namespace(namespace).List(context.TODO(), metav1.ListOptions{})
+	crd, err := dynamicClient.Resource(gvr).Namespace("kube-system").Get(context.TODO(), "cluster-metrics", metav1.GetOptions{})
 	if err != nil {
 		klog.Errorf("Failed to retrieve CRD: %v", err)
 		return nil, err
 	}
 
-	if len(crd.Items) == 0 {
-		return nil, fmt.Errorf("no DistributedJob resources found in namespace %s", namespace)
+	metrics := crd.Object["spec"].(map[string]interface{})["metrics"].(map[string]interface{})
+	bandwidth := metrics["bandwidth"].(map[string]interface{})
+	latency := metrics["latency"].(map[string]interface{})
+
+	networkMetrics := &NetworkMetrics{
+		Bandwidth: make(map[string]map[string]float64),
+		Latency:   make(map[string]map[string]float64),
 	}
 
-	if len(crd.Items) > 1 {
-		return nil, fmt.Errorf("multiple DistributedJob resources found in namespace %s", namespace)
+	for worker, workerMetrics := range bandwidth {
+		workerData := workerMetrics.(map[string]interface{})
+		networkMetrics.Bandwidth[worker] = make(map[string]float64)
+		for peer, bw := range workerData {
+			networkMetrics.Bandwidth[worker][peer] = bw.(float64)
+		}
 	}
 
-	workloadStatusData, ok := crd.Items[0].Object["status"].(map[string]interface{})["workloadStatuses"].([]interface{})
+	for worker, workerMetrics := range latency {
+		workerData := workerMetrics.(map[string]interface{})
+		networkMetrics.Latency[worker] = make(map[string]float64)
+		for peer, lat := range workerData {
+			networkMetrics.Latency[worker][peer] = lat.(float64)
+		}
+	}
+
+	return networkMetrics, nil
+}
+
+// DistributedJob CRD: required bandwidth and latency
+type Dependency struct {
+	Resource  string     `json:"resource"`
+	Bandwidth Allocation `json:"bandwidth"`
+	Latency   Allocation `json:"latency"`
+}
+
+type Allocation struct {
+	Requests int `json:"requests,omitempty"`
+	Limits   int `json:"limits"`
+}
+
+type Workload struct {
+	Resource     string       `json:"resource"`
+	Dependencies []Dependency `json:"dependencies,omitempty"`
+}
+
+type PodScheduling struct {
+	PodName  string
+	NodeName string
+}
+
+type WorkloadStatus struct {
+	Resource       string
+	Order          int
+	Phase          string
+	SchedulingInfo []PodScheduling
+}
+
+func getDistributedJobWorkloads(namespace string) ([]Workload, []WorkloadStatus, error) {
+	config, err := rest.InClusterConfig()
+	if err != nil {
+		klog.Errorf("Failed to create in-cluster config: %v", err)
+		return nil, nil, err
+	}
+	dynamicClient, err := dynamic.NewForConfig(config)
+	if err != nil {
+		klog.Errorf("Failed to create dynamic client: %v", err)
+		return nil, nil, err
+	}
+	gvr := schema.GroupVersionResource{
+		Group:    "batch.ddl.com",
+		Version:  "v1",
+		Resource: "distributedjobs",
+	}
+	distributedJobs, err := dynamicClient.Resource(gvr).Namespace(namespace).List(context.TODO(), metav1.ListOptions{})
+	if err != nil {
+		klog.Errorf("Failed to retrieve DistributedJobs: %v", err)
+		return nil, nil, err
+	}
+	if len(distributedJobs.Items) == 0 {
+		return nil, nil, fmt.Errorf("no DistributedJob resources found in namespace %s", namespace)
+	}
+	if len(distributedJobs.Items) > 1 {
+		return nil, nil, fmt.Errorf("multiple DistributedJob resources found in namespace %s", namespace)
+	}
+
+	// Workload (DistributedJob Spec)
+	var workloads []Workload
+	workloadData, ok := distributedJobs.Items[0].Object["spec"].(map[string]interface{})["workloads"].([]interface{})
 	if !ok {
-		return nil, fmt.Errorf("failed to parse workloadStatuses")
+		return nil, nil, fmt.Errorf("failed to parse workloads")
 	}
-	workloadStatus := &WorkloadStatus{
-		Resource: []string{},
-		Order:    []int{},
-		Phase:    []string{},
+	for _, w := range workloadData {
+		workloadMap := w.(map[string]interface{})
+		resource, ok := workloadMap["resource"].(string)
+		if !ok {
+			return nil, nil, fmt.Errorf("failed to parse resource in workload")
+		}
+
+		var dependencies []Dependency
+		if deps, exists := workloadMap["dependencies"].([]interface{}); exists {
+			for _, d := range deps {
+				depMap := d.(map[string]interface{})
+				depResource := depMap["resource"].(string)
+
+				bandwidthMap := depMap["bandwidth"].(map[string]interface{})
+				latencyMap := depMap["latency"].(map[string]interface{})
+
+				dependency := Dependency{
+					Resource: depResource,
+					Bandwidth: Allocation{
+						Requests: int(bandwidthMap["requests"].(int64)),
+						Limits:   int(bandwidthMap["limits"].(int64)),
+					},
+					Latency: Allocation{
+						Requests: int(latencyMap["requests"].(int64)),
+						Limits:   int(latencyMap["limits"].(int64)),
+					},
+				}
+				dependencies = append(dependencies, dependency)
+			}
+		}
+		workload := Workload{
+			Resource:     resource,
+			Dependencies: dependencies,
+		}
+
+		workloads = append(workloads, workload)
+	}
+
+	// WorkloadStatus (DistributedJob Status)
+	var workloadStatuses []WorkloadStatus
+	workloadStatusData, ok := distributedJobs.Items[0].Object["status"].(map[string]interface{})["workloadStatuses"].([]interface{})
+	if !ok {
+		return nil, nil, fmt.Errorf("failed to parse workloadStatuses")
 	}
 
 	for _, w := range workloadStatusData {
 		ws := w.(map[string]interface{})
-		workloadStatus.Resource = append(workloadStatus.Resource, ws["resource"].(string))
-		workloadStatus.Order = append(workloadStatus.Order, int(ws["order"].(int64)))
-		workloadStatus.Phase = append(workloadStatus.Phase, ws["phase"].(string))
+		resource, ok := ws["resource"].(string)
+		if !ok {
+			return nil, nil, fmt.Errorf("failed to parse resource in workload")
+		}
+		order := int(ws["order"].(int64))
+		if !ok {
+			return nil, nil, fmt.Errorf("failed to parse order in workload")
+		}
+		phase, ok := ws["phase"].(string)
+		if !ok {
+			return nil, nil, fmt.Errorf("failed to parse phase in workload")
+		}
+
+		var schedulingInfo []PodScheduling
+		if schedulingInfoData, exists := ws["schedulingInfo"].([]interface{}); exists && len(schedulingInfoData) > 0 {
+			firstSchedulingInfo := schedulingInfoData[0].(map[string]interface{})
+			var podName = ""
+			var nodeName = ""
+			if podInfo, ok := firstSchedulingInfo["podName"].(string); ok {
+				podName = podInfo
+			}
+			if nodeInfo, ok := firstSchedulingInfo["nodeName"].(string); ok {
+				nodeName = nodeInfo
+			}
+
+			schedInfo := PodScheduling{
+				PodName:  podName,
+				NodeName: nodeName,
+			}
+			schedulingInfo = append(schedulingInfo, schedInfo)
+		}
+
+		workloadStatus := WorkloadStatus{
+			Resource:       resource,
+			Order:          order,
+			Phase:          phase,
+			SchedulingInfo: schedulingInfo,
+		}
+		workloadStatuses = append(workloadStatuses, workloadStatus)
 	}
 
-	return workloadStatus, nil
+	return workloads, workloadStatuses, nil
+}
+
+func getBestNodeSet(nodes []string, networkMetrics *NetworkMetrics, podRequirements [][]float64, m int) ([]string, float64) {
+	bestScore := math.Inf(-1)
+	bestCombination := []string{}
+
+	combinations := getCombinations(nodes, m)
+
+	for _, combination := range combinations {
+		score := getScore(combination, networkMetrics, podRequirements)
+		if score > bestScore {
+			bestScore = score
+			bestCombination = combination
+		}
+	}
+
+	return bestCombination, bestScore
+}
+
+func getCombinations(nodes []string, m int) [][]string {
+	var result [][]string
+	var current []string
+	dfs(nodes, m, 0, current, &result)
+	return result
+}
+
+func dfs(nodes []string, m, start int, current []string, result *[][]string) {
+	if len(current) == m {
+		combination := make([]string, m)
+		copy(combination, current)
+		*result = append(*result, combination)
+		return
+	}
+
+	for i := start; i < len(nodes); i++ {
+		current = append(current, nodes[i])
+		dfs(nodes, m, i+1, current, result)
+		current = current[:len(current)-1]
+	}
+}
+
+func getScore(combination []string, networkMetrics *NetworkMetrics, podRequirements [][]float64) float64 {
+	score := 0.0
+	for i := 0; i < len(combination)-1; i++ {
+		curBandwidth := networkMetrics.Bandwidth[combination[i]][combination[i+1]]
+		curLatency := networkMetrics.Latency[combination[i]][combination[i+1]]
+
+		if curBandwidth < podRequirements[i][0] || curLatency > podRequirements[i][2] {
+			return 0
+		} else {
+			bandwidthScore := (curBandwidth - podRequirements[i][0]) / (podRequirements[i][1] - podRequirements[i][0]) * 100
+			latencyScore := (podRequirements[i][2] - curBandwidth) / (podRequirements[i][2] - podRequirements[i][3]) * 100
+			if bandwidthScore > 100 {
+				bandwidthScore = 100
+			}
+			if latencyScore > 100 {
+				latencyScore = 100
+			}
+			score += bandwidthScore + latencyScore
+		}
+	}
+	return score
 }
