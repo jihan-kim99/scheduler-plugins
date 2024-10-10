@@ -7,35 +7,35 @@ spec:
   metrics:
     bandwidth:
       kind-worker:
-        kind-worker2: 120.5  # Mbps
-        kind-worker3: 115.3  # Mbps
-        kind-worker4: 110.8  # Mbps
+        kind-worker2: 503.93  # Mbps
+        kind-worker3: 15.23   # Mbps
+        kind-worker4: 504.06  # Mbps
       kind-worker2:
-        kind-worker: 120.5   # Mbps
-        kind-worker3: 130.7  # Mbps
-        kind-worker4: 125.4  # Mbps
+        kind-worker: 467.02   # Mbps
+        kind-worker3: 97.52   # Mbps
+        kind-worker4: 471.01  # Mbps
       kind-worker3:
-        kind-worker: 115.3   # Mbps
-        kind-worker2: 130.7  # Mbps
-        kind-worker4: 118.9  # Mbps
+        kind-worker: 469.54   # Mbps
+        kind-worker2: 469.51  # Mbps
+        kind-worker4: 93.53   # Mbps
       kind-worker4:
-        kind-worker: 110.8   # Mbps
-        kind-worker2: 125.4  # Mbps
-        kind-worker3: 118.9  # Mbps
+        kind-worker: 47.39    # Mbps
+        kind-worker2: 49.49   # Mbps
+        kind-worker3: 27.05   # Mbps
     latency:
       kind-worker:
-        kind-worker2: 10.3   # ms
-        kind-worker3: 11.5   # ms
-        kind-worker4: 9.8    # ms
+        kind-worker2: 0.98    # ms
+        kind-worker3: 126.5   # ms
+        kind-worker4: 0.93    # ms
       kind-worker2:
-        kind-worker: 10.3    # ms
-        kind-worker3: 12.1   # ms
-        kind-worker4: 11.2   # ms
+        kind-worker: 1.15     # ms
+        kind-worker3: 126.37  # ms
+        kind-worker4: 0.87    # ms
       kind-worker3:
-        kind-worker: 11.5    # ms
-        kind-worker2: 12.1   # ms
-        kind-worker4: 10.9   # ms
+        kind-worker: 0.55     # ms
+        kind-worker2: 127.16  # ms
+        kind-worker4: 0.6     # ms
       kind-worker4:
-        kind-worker: 9.8     # ms
-        kind-worker2: 11.2   # ms
-        kind-worker3: 10.9   # ms
+        kind-worker: 126.41   # ms
+        kind-worker2: 126.92  # ms
+        kind-worker3: 126.6   # ms

@@ -100,29 +100,6 @@ func (p *PreFilterState) Clone() framework.StateData {
 }
 
 func (pl *TopologyScheduling) PreFilter(ctx context.Context, state *framework.CycleState, pod *v1.Pod) (*framework.PreFilterResult, *framework.Status) {
-	resource, exists := pod.Labels["resource"]
-	if !exists {
-		return &framework.PreFilterResult{}, framework.NewStatus(framework.Success, "")
-	}
-
-	// Get DistributedJob info
-	workloadSpec, workloadStatus, err := getDistributedJobWorkloads(pod.Namespace)
-	if err != nil {
-		return nil, framework.NewStatus(framework.Error, fmt.Sprintf("failed to get DistributedJob CRD: %v", err))
-	}
-	klog.V(1).InfoS("TopologyScheduling: PreFilter: got CRD Info", "spec", workloadSpec, "status", workloadStatus)
-
-	var podOrder int
-	for _, workloadS := range workloadStatus {
-		if resource == workloadS.Resource {
-			podOrder = workloadS.Order - 1
-		}
-	}
-
-	if podOrder > 1 {
-		return &framework.PreFilterResult{}, framework.NewStatus(framework.Success, "")
-	}
-
 	// Filter based on CPU using ratio (0.7)
 	nodes, err := pl.handle.SnapshotSharedLister().NodeInfos().List()
 	nodeList := []string{}
@@ -143,6 +120,13 @@ func (pl *TopologyScheduling) PreFilter(ctx context.Context, state *framework.Cy
 		return nil, framework.NewStatus(framework.Error, fmt.Sprintf("failed to get network metrics: %v", err))
 	}
 	klog.V(1).InfoS("TopologyScheduling: PreFilter: got network metrics", "data", networkMetrics)
+
+	// Get DistributedJob info
+	workloadSpec, workloadStatus, err := getDistributedJobWorkloads(pod.Namespace)
+	if err != nil {
+		return nil, framework.NewStatus(framework.Error, fmt.Sprintf("failed to get DistributedJob CRD: %v", err))
+	}
+	klog.V(1).InfoS("TopologyScheduling: PreFilter: got CRD Info", "spec", workloadSpec, "status", workloadStatus)
 
 	resourceList := []string{}
 	for _, workloadS := range workloadStatus {
@@ -498,18 +482,26 @@ func getScore(combination []string, networkMetrics *NetworkMetrics, podRequireme
 	for i := 0; i < len(combination)-1; i++ {
 		curBandwidth := networkMetrics.Bandwidth[combination[i]][combination[i+1]]
 		curLatency := networkMetrics.Latency[combination[i]][combination[i+1]]
+		klog.V(1).InfoS("Data: ", "combination", combination, "curBandwidth", curBandwidth, "curLatency", curLatency, "podRequirements", podRequirements)
 
 		if curBandwidth < podRequirements[i][0] || curLatency > podRequirements[i][2] {
 			return 0
+		} else if curBandwidth >= podRequirements[i][1] || curLatency <= podRequirements[i][3] {
+			score += 200
 		} else {
-			bandwidthScore := (curBandwidth - podRequirements[i][0]) / (podRequirements[i][1] - podRequirements[i][0]) * 100
-			latencyScore := (podRequirements[i][2] - curBandwidth) / (podRequirements[i][2] - podRequirements[i][3]) * 100
-			if bandwidthScore > 100 {
-				bandwidthScore = 100
+			var bandwidthScore float64
+			var latencyScore float64
+			if curBandwidth >= podRequirements[i][1] {
+				bandwidthScore = 100.0
+			} else {
+				bandwidthScore = (curBandwidth - podRequirements[i][0]) / (podRequirements[i][1] - podRequirements[i][0]) * 100
 			}
-			if latencyScore > 100 {
-				latencyScore = 100
+			if curLatency < podRequirements[i][3] {
+				latencyScore = 100.0
+			} else {
+				latencyScore = (curBandwidth - podRequirements[i][3]) / (podRequirements[i][2] - podRequirements[i][3]) * 100
 			}
+			klog.V(1).InfoS("Score", "1", bandwidthScore+latencyScore)
 			score += bandwidthScore + latencyScore
 		}
 	}
