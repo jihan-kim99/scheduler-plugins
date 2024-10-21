@@ -4,6 +4,8 @@ import (
 	"context"
 	"fmt"
 	"math"
+	"strings"
+	"sync"
 	"time"
 
 	v1 "k8s.io/api/core/v1"
@@ -14,14 +16,19 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 	"k8s.io/client-go/dynamic"
+	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/rest"
+	"k8s.io/client-go/tools/cache"
 	"k8s.io/kubernetes/pkg/scheduler/framework/plugins/queuesort"
 )
 
 const Name = "TopologyScheduling"
 
 type TopologyScheduling struct {
-	handle framework.Handle
+	handle            framework.Handle
+	clientset         kubernetes.Interface
+	podInformer       cache.SharedIndexInformer
+	unschedulablePods sync.Map
 }
 
 var _ framework.QueueSortPlugin = &TopologyScheduling{}
@@ -38,13 +45,18 @@ func (pl *TopologyScheduling) Less(podInfo1 *framework.QueuedPodInfo, podInfo2 *
 	klog.V(1).InfoS("TopologyScheduling: QueueSort called", "pod1", pod1.Name, "pod2", pod2.Name)
 
 	if pod1.Namespace != pod2.Namespace {
-		s := &queuesort.PrioritySort{}
-		return s.Less(podInfo1, podInfo2)
+		return strings.Compare(pod1.Namespace, pod1.Namespace) > 0
 	}
 
 	resource1, exists1 := pod1.Labels["resource"]
 	resource2, exists2 := pod2.Labels["resource"]
 	if !exists1 || !exists2 {
+		if exists1 {
+			return true
+		}
+		if exists2 {
+			return false
+		}
 		s := &queuesort.PrioritySort{}
 		return s.Less(podInfo1, podInfo2)
 	}
@@ -117,14 +129,14 @@ func (pl *TopologyScheduling) PreFilter(ctx context.Context, state *framework.Cy
 	// Get network cost
 	networkMetrics, err := getNetworkMetrics()
 	if err != nil {
-		return nil, framework.NewStatus(framework.Error, fmt.Sprintf("failed to get network metrics: %v", err))
+		return nil, framework.NewStatus(framework.Unschedulable, fmt.Sprintf("failed to get network metrics: %v", err))
 	}
 	klog.V(1).InfoS("TopologyScheduling: PreFilter: got network metrics", "data", networkMetrics)
 
 	// Get DistributedJob info
 	workloadSpec, workloadStatus, err := getDistributedJobWorkloads(pod.Namespace)
 	if err != nil {
-		return nil, framework.NewStatus(framework.Error, fmt.Sprintf("failed to get DistributedJob CRD: %v", err))
+		return nil, framework.NewStatus(framework.Unschedulable, fmt.Sprintf("failed to get DistributedJob CRD: %v", err))
 	}
 	klog.V(1).InfoS("TopologyScheduling: PreFilter: got CRD Info", "spec", workloadSpec, "status", workloadStatus)
 
@@ -146,6 +158,10 @@ func (pl *TopologyScheduling) PreFilter(ctx context.Context, state *framework.Cy
 	klog.V(1).InfoS("TopologyScheduling: PreFilter: get dependencies", "resourceList", resourceList, "dependencies", podRequirements)
 
 	nodeSet, score := getBestNodeSet(nodeList, networkMetrics, podRequirements, len(resourceList))
+	if len(nodeSet) != len(resourceList) {
+		klog.V(1).InfoS("TopologyScheduling: PreFilter: cannot find best node set", "nodeSet", nodeSet)
+		return &framework.PreFilterResult{}, framework.NewStatus(framework.Unschedulable, "")
+	}
 	klog.V(1).InfoS("TopologyScheduling: PreFilter: got best node set", "nodeSet", nodeSet, "bestScore", score)
 
 	data := &PreFilterState{
@@ -266,10 +282,15 @@ func getNetworkMetrics() (*NetworkMetrics, error) {
 	}
 
 	for worker, workerMetrics := range bandwidth {
+
 		workerData := workerMetrics.(map[string]interface{})
 		networkMetrics.Bandwidth[worker] = make(map[string]float64)
 		for peer, bw := range workerData {
-			networkMetrics.Bandwidth[worker][peer] = bw.(float64)
+			if val, ok := bw.(float64); ok {
+				networkMetrics.Bandwidth[worker][peer] = val
+			} else {
+				networkMetrics.Bandwidth[worker][peer] = float64(bw.(int64))
+			}
 		}
 	}
 
@@ -277,7 +298,11 @@ func getNetworkMetrics() (*NetworkMetrics, error) {
 		workerData := workerMetrics.(map[string]interface{})
 		networkMetrics.Latency[worker] = make(map[string]float64)
 		for peer, lat := range workerData {
-			networkMetrics.Latency[worker][peer] = lat.(float64)
+			if val, ok := lat.(float64); ok {
+				networkMetrics.Latency[worker][peer] = val
+			} else {
+				networkMetrics.Latency[worker][peer] = float64(lat.(int64))
+			}
 		}
 	}
 

@@ -12,11 +12,11 @@ spec:
         kind-worker4: 504.06  # Mbps
       kind-worker2:
         kind-worker: 467.02   # Mbps
-        kind-worker3: 97.52   # Mbps
+        kind-worker3: 1   # Mbps
         kind-worker4: 471.01  # Mbps
       kind-worker3:
         kind-worker: 469.54   # Mbps
-        kind-worker2: 469.51  # Mbps
+        kind-worker2: 1  # Mbps
         kind-worker4: 93.53   # Mbps
       kind-worker4:
         kind-worker: 47.39    # Mbps

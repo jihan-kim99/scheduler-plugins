@@ -1,0 +1,62 @@
+2024-10-11T02:32:54Z	INFO	setup	starting manager
+2024-10-11T02:32:54Z	INFO	controller-runtime.metrics	Starting metrics server
+2024-10-11T02:32:54Z	INFO	setup	disabling http/2
+I1011 02:32:54.975199       1 leaderelection.go:254] attempting to acquire leader lease kubebuilder-system/bbcef8ce.ddl.com...
+2024-10-11T02:32:54Z	INFO	starting server	{"name": "health probe", "addr": "[::]:8081"}
+2024-10-11T02:32:56Z	INFO	controller-runtime.metrics	Serving metrics server	{"bindAddress": ":8443", "secure": true}
+I1011 02:33:13.686273       1 leaderelection.go:268] successfully acquired lease kubebuilder-system/bbcef8ce.ddl.com
+2024-10-11T02:33:13Z	DEBUG	events	kubebuilder-controller-manager-765b7d7bb4-2fv4w_a0075d34-196e-4c48-b61b-163999ae33cb became leader	{"type": "Normal", "object": {"kind":"Lease","namespace":"kubebuilder-system","name":"bbcef8ce.ddl.com","uid":"7ae3a340-7731-464b-8911-fe7c82670c7b","apiVersion":"coordination.k8s.io/v1","resourceVersion":"17411"}, "reason": "LeaderElection"}
+2024-10-11T02:33:13Z	INFO	Starting EventSource	{"controller": "distributedjob", "controllerGroup": "batch.ddl.com", "controllerKind": "DistributedJob", "source": "kind source: *v1.DistributedJob"}
+2024-10-11T02:33:13Z	INFO	Starting EventSource	{"controller": "distributedjob", "controllerGroup": "batch.ddl.com", "controllerKind": "DistributedJob", "source": "kind source: *v1.Pod"}
+2024-10-11T02:33:13Z	INFO	Starting Controller	{"controller": "distributedjob", "controllerGroup": "batch.ddl.com", "controllerKind": "DistributedJob"}
+W1011 02:33:13.689370       1 reflector.go:561] pkg/mod/k8s.io/client-go@v0.31.0/tools/cache/reflector.go:243: failed to list *v1.Pod: pods is forbidden: User "system:serviceaccount:kubebuilder-system:kubebuilder-controller-manager" cannot list resource "pods" in API group "" at the cluster scope
+E1011 02:33:13.689438       1 reflector.go:158] "Unhandled Error" err="pkg/mod/k8s.io/client-go@v0.31.0/tools/cache/reflector.go:243: Failed to watch *v1.Pod: failed to list *v1.Pod: pods is forbidden: User \"system:serviceaccount:kubebuilder-system:kubebuilder-controller-manager\" cannot list resource \"pods\" in API group \"\" at the cluster scope" logger="UnhandledError"
+W1011 02:33:14.669388       1 reflector.go:561] pkg/mod/k8s.io/client-go@v0.31.0/tools/cache/reflector.go:243: failed to list *v1.Pod: pods is forbidden: User "system:serviceaccount:kubebuilder-system:kubebuilder-controller-manager" cannot list resource "pods" in API group "" at the cluster scope
+E1011 02:33:14.669437       1 reflector.go:158] "Unhandled Error" err="pkg/mod/k8s.io/client-go@v0.31.0/tools/cache/reflector.go:243: Failed to watch *v1.Pod: failed to list *v1.Pod: pods is forbidden: User \"system:serviceaccount:kubebuilder-system:kubebuilder-controller-manager\" cannot list resource \"pods\" in API group \"\" at the cluster scope" logger="UnhandledError"
+W1011 02:33:16.956381       1 reflector.go:561] pkg/mod/k8s.io/client-go@v0.31.0/tools/cache/reflector.go:243: failed to list *v1.Pod: pods is forbidden: User "system:serviceaccount:kubebuilder-system:kubebuilder-controller-manager" cannot list resource "pods" in API group "" at the cluster scope
+E1011 02:33:16.956432       1 reflector.go:158] "Unhandled Error" err="pkg/mod/k8s.io/client-go@v0.31.0/tools/cache/reflector.go:243: Failed to watch *v1.Pod: failed to list *v1.Pod: pods is forbidden: User \"system:serviceaccount:kubebuilder-system:kubebuilder-controller-manager\" cannot list resource \"pods\" in API group \"\" at the cluster scope" logger="UnhandledError"
+W1011 02:33:20.547977       1 reflector.go:561] pkg/mod/k8s.io/client-go@v0.31.0/tools/cache/reflector.go:243: failed to list *v1.Pod: pods is forbidden: User "system:serviceaccount:kubebuilder-system:kubebuilder-controller-manager" cannot list resource "pods" in API group "" at the cluster scope
+E1011 02:33:20.548027       1 reflector.go:158] "Unhandled Error" err="pkg/mod/k8s.io/client-go@v0.31.0/tools/cache/reflector.go:243: Failed to watch *v1.Pod: failed to list *v1.Pod: pods is forbidden: User \"system:serviceaccount:kubebuilder-system:kubebuilder-controller-manager\" cannot list resource \"pods\" in API group \"\" at the cluster scope" logger="UnhandledError"
+W1011 02:33:32.237446       1 reflector.go:561] pkg/mod/k8s.io/client-go@v0.31.0/tools/cache/reflector.go:243: failed to list *v1.Pod: pods is forbidden: User "system:serviceaccount:kubebuilder-system:kubebuilder-controller-manager" cannot list resource "pods" in API group "" at the cluster scope
+E1011 02:33:32.237492       1 reflector.go:158] "Unhandled Error" err="pkg/mod/k8s.io/client-go@v0.31.0/tools/cache/reflector.go:243: Failed to watch *v1.Pod: failed to list *v1.Pod: pods is forbidden: User \"system:serviceaccount:kubebuilder-system:kubebuilder-controller-manager\" cannot list resource \"pods\" in API group \"\" at the cluster scope" logger="UnhandledError"
+W1011 02:33:56.385798       1 reflector.go:561] pkg/mod/k8s.io/client-go@v0.31.0/tools/cache/reflector.go:243: failed to list *v1.Pod: pods is forbidden: User "system:serviceaccount:kubebuilder-system:kubebuilder-controller-manager" cannot list resource "pods" in API group "" at the cluster scope
+E1011 02:33:56.385848       1 reflector.go:158] "Unhandled Error" err="pkg/mod/k8s.io/client-go@v0.31.0/tools/cache/reflector.go:243: Failed to watch *v1.Pod: failed to list *v1.Pod: pods is forbidden: User \"system:serviceaccount:kubebuilder-system:kubebuilder-controller-manager\" cannot list resource \"pods\" in API group \"\" at the cluster scope" logger="UnhandledError"
+W1011 02:34:47.740137       1 reflector.go:561] pkg/mod/k8s.io/client-go@v0.31.0/tools/cache/reflector.go:243: failed to list *v1.Pod: pods is forbidden: User "system:serviceaccount:kubebuilder-system:kubebuilder-controller-manager" cannot list resource "pods" in API group "" at the cluster scope
+E1011 02:34:47.740199       1 reflector.go:158] "Unhandled Error" err="pkg/mod/k8s.io/client-go@v0.31.0/tools/cache/reflector.go:243: Failed to watch *v1.Pod: failed to list *v1.Pod: pods is forbidden: User \"system:serviceaccount:kubebuilder-system:kubebuilder-controller-manager\" cannot list resource \"pods\" in API group \"\" at the cluster scope" logger="UnhandledError"
+2024-10-11T02:35:14Z	ERROR	Could not wait for Cache to sync	{"controller": "distributedjob", "controllerGroup": "batch.ddl.com", "controllerKind": "DistributedJob", "error": "failed to wait for distributedjob caches to sync: timed out waiting for cache to be synced for Kind *v1.DistributedJob"}
+sigs.k8s.io/controller-runtime/pkg/internal/controller.(*Controller[...]).Start.func2.1
+	/go/pkg/mod/sigs.k8s.io/controller-runtime@v0.19.0/pkg/internal/controller/controller.go:200
+sigs.k8s.io/controller-runtime/pkg/internal/controller.(*Controller[...]).Start.func2
+	/go/pkg/mod/sigs.k8s.io/controller-runtime@v0.19.0/pkg/internal/controller/controller.go:205
+sigs.k8s.io/controller-runtime/pkg/internal/controller.(*Controller[...]).Start
+	/go/pkg/mod/sigs.k8s.io/controller-runtime@v0.19.0/pkg/internal/controller/controller.go:231
+sigs.k8s.io/controller-runtime/pkg/manager.(*runnableGroup).reconcile.func1
+	/go/pkg/mod/sigs.k8s.io/controller-runtime@v0.19.0/pkg/manager/runnable_group.go:226
+2024-10-11T02:35:14Z	INFO	Stopping and waiting for non leader election runnables
+2024-10-11T02:35:14Z	INFO	Stopping and waiting for leader election runnables
+2024-10-11T02:35:14Z	INFO	Stopping and waiting for caches
+2024-10-11T02:35:14Z	ERROR	controller-runtime.source.EventHandler	failed to get informer from cache	{"error": "Timeout: failed waiting for *v1.Pod Informer to sync"}
+sigs.k8s.io/controller-runtime/pkg/internal/source.(*Kind[...]).Start.func1.1
+	/go/pkg/mod/sigs.k8s.io/controller-runtime@v0.19.0/pkg/internal/source/kind.go:76
+k8s.io/apimachinery/pkg/util/wait.loopConditionUntilContext.func1
+	/go/pkg/mod/k8s.io/apimachinery@v0.31.0/pkg/util/wait/loop.go:53
+k8s.io/apimachinery/pkg/util/wait.loopConditionUntilContext
+	/go/pkg/mod/k8s.io/apimachinery@v0.31.0/pkg/util/wait/loop.go:54
+k8s.io/apimachinery/pkg/util/wait.PollUntilContextCancel
+	/go/pkg/mod/k8s.io/apimachinery@v0.31.0/pkg/util/wait/poll.go:33
+sigs.k8s.io/controller-runtime/pkg/internal/source.(*Kind[...]).Start.func1
+	/go/pkg/mod/sigs.k8s.io/controller-runtime@v0.19.0/pkg/internal/source/kind.go:64
+2024-10-11T02:35:14Z	INFO	Stopping and waiting for webhooks
+2024-10-11T02:35:14Z	INFO	Stopping and waiting for HTTP servers
+2024-10-11T02:35:14Z	INFO	controller-runtime.metrics	Shutting down metrics server with timeout of 1 minute
+2024-10-11T02:35:14Z	INFO	shutting down server	{"name": "health probe", "addr": "[::]:8081"}
+2024-10-11T02:35:14Z	INFO	Wait completed, proceeding to shutdown the manager
+2024-10-11T02:35:14Z	ERROR	setup	problem running manager	{"error": "failed to wait for distributedjob caches to sync: timed out waiting for cache to be synced for Kind *v1.DistributedJob"}
+main.main
+	/workspace/cmd/main.go:167
+runtime.main
+	/usr/local/go/src/runtime/proc.go:271
+2024-10-11T02:35:14Z	DEBUG	events	kubebuilder-controller-manager-765b7d7bb4-2fv4w_a0075d34-196e-4c48-b61b-163999ae33cb stopped leading	{"type": "Normal", "object": {"kind":"Lease","namespace":"kubebuilder-system","name":"bbcef8ce.ddl.com","uid":"7ae3a340-7731-464b-8911-fe7c82670c7b","apiVersion":"coordination.k8s.io/v1","resourceVersion":"17683"}, "reason": "LeaderElection"}
+2024-10-11T02:35:14Z	ERROR	error received after stop sequence was engaged	{"error": "leader election lost"}
+sigs.k8s.io/controller-runtime/pkg/manager.(*controllerManager).engageStopProcedure.func1
+	/go/pkg/mod/sigs.k8s.io/controller-runtime@v0.19.0/pkg/manager/internal.go:512

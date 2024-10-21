@@ -1,152 +1,155 @@
-I1010 08:56:31.557307       1 flags.go:64] FLAG: --allow-metric-labels="[]"
-I1010 08:56:31.557432       1 flags.go:64] FLAG: --allow-metric-labels-manifest=""
-I1010 08:56:31.557439       1 flags.go:64] FLAG: --authentication-kubeconfig=""
-I1010 08:56:31.557441       1 flags.go:64] FLAG: --authentication-skip-lookup="false"
-I1010 08:56:31.557444       1 flags.go:64] FLAG: --authentication-token-webhook-cache-ttl="10s"
-I1010 08:56:31.557447       1 flags.go:64] FLAG: --authentication-tolerate-lookup-failure="true"
-I1010 08:56:31.557449       1 flags.go:64] FLAG: --authorization-always-allow-paths="[/healthz,/readyz,/livez]"
-I1010 08:56:31.557455       1 flags.go:64] FLAG: --authorization-kubeconfig=""
-I1010 08:56:31.557456       1 flags.go:64] FLAG: --authorization-webhook-cache-authorized-ttl="10s"
-I1010 08:56:31.557458       1 flags.go:64] FLAG: --authorization-webhook-cache-unauthorized-ttl="10s"
-I1010 08:56:31.557460       1 flags.go:64] FLAG: --bind-address="0.0.0.0"
-I1010 08:56:31.557464       1 flags.go:64] FLAG: --cert-dir=""
-I1010 08:56:31.557466       1 flags.go:64] FLAG: --client-ca-file=""
-I1010 08:56:31.557468       1 flags.go:64] FLAG: --config="/etc/kubernetes/scheduler-config.yaml"
-I1010 08:56:31.557469       1 flags.go:64] FLAG: --contention-profiling="true"
-I1010 08:56:31.557471       1 flags.go:64] FLAG: --disabled-metrics="[]"
-I1010 08:56:31.557473       1 flags.go:64] FLAG: --feature-gates=""
-I1010 08:56:31.557476       1 flags.go:64] FLAG: --help="false"
-I1010 08:56:31.557478       1 flags.go:64] FLAG: --http2-max-streams-per-connection="0"
-I1010 08:56:31.557480       1 flags.go:64] FLAG: --kube-api-burst="100"
-I1010 08:56:31.557483       1 flags.go:64] FLAG: --kube-api-content-type="application/vnd.kubernetes.protobuf"
-I1010 08:56:31.557485       1 flags.go:64] FLAG: --kube-api-qps="50"
-I1010 08:56:31.557497       1 flags.go:64] FLAG: --kubeconfig=""
-I1010 08:56:31.557518       1 flags.go:64] FLAG: --leader-elect="true"
-I1010 08:56:31.557523       1 flags.go:64] FLAG: --leader-elect-lease-duration="15s"
-I1010 08:56:31.557525       1 flags.go:64] FLAG: --leader-elect-renew-deadline="10s"
-I1010 08:56:31.557528       1 flags.go:64] FLAG: --leader-elect-resource-lock="leases"
-I1010 08:56:31.557529       1 flags.go:64] FLAG: --leader-elect-resource-name="kube-scheduler"
-I1010 08:56:31.557531       1 flags.go:64] FLAG: --leader-elect-resource-namespace="kube-system"
-I1010 08:56:31.557533       1 flags.go:64] FLAG: --leader-elect-retry-period="2s"
-I1010 08:56:31.557538       1 flags.go:64] FLAG: --log-flush-frequency="5s"
-I1010 08:56:31.557541       1 flags.go:64] FLAG: --log-text-info-buffer-size="0"
-I1010 08:56:31.557572       1 flags.go:64] FLAG: --log-text-split-stream="false"
-I1010 08:56:31.557577       1 flags.go:64] FLAG: --logging-format="text"
-I1010 08:56:31.557579       1 flags.go:64] FLAG: --master=""
-I1010 08:56:31.557581       1 flags.go:64] FLAG: --permit-address-sharing="false"
-I1010 08:56:31.557583       1 flags.go:64] FLAG: --permit-port-sharing="false"
-I1010 08:56:31.557585       1 flags.go:64] FLAG: --pod-max-in-unschedulable-pods-duration="5m0s"
-I1010 08:56:31.557590       1 flags.go:64] FLAG: --profiling="true"
-I1010 08:56:31.557592       1 flags.go:64] FLAG: --requestheader-allowed-names="[]"
-I1010 08:56:31.557597       1 flags.go:64] FLAG: --requestheader-client-ca-file=""
-I1010 08:56:31.557599       1 flags.go:64] FLAG: --requestheader-extra-headers-prefix="[x-remote-extra-]"
-I1010 08:56:31.557601       1 flags.go:64] FLAG: --requestheader-group-headers="[x-remote-group]"
-I1010 08:56:31.557604       1 flags.go:64] FLAG: --requestheader-username-headers="[x-remote-user]"
-I1010 08:56:31.557606       1 flags.go:64] FLAG: --secure-port="10259"
-I1010 08:56:31.557608       1 flags.go:64] FLAG: --show-hidden-metrics-for-version=""
-I1010 08:56:31.557610       1 flags.go:64] FLAG: --tls-cert-file=""
-I1010 08:56:31.557611       1 flags.go:64] FLAG: --tls-cipher-suites="[]"
-I1010 08:56:31.557613       1 flags.go:64] FLAG: --tls-min-version=""
-I1010 08:56:31.557615       1 flags.go:64] FLAG: --tls-private-key-file=""
-I1010 08:56:31.557617       1 flags.go:64] FLAG: --tls-sni-cert-key="[]"
-I1010 08:56:31.557622       1 flags.go:64] FLAG: --v="1"
-I1010 08:56:31.557625       1 flags.go:64] FLAG: --version="false"
-I1010 08:56:31.557629       1 flags.go:64] FLAG: --vmodule=""
-I1010 08:56:31.557631       1 flags.go:64] FLAG: --write-config-to=""
-I1010 08:56:31.705796       1 serving.go:380] Generated self-signed cert in-memory
-W1010 08:56:31.706319       1 client_config.go:659] Neither --kubeconfig nor --master was specified.  Using the inClusterConfig.  This might not work.
-I1010 08:56:31.931903       1 topologyscheduler.go:218] "TopologyScheduling: Initializing plugin"
-I1010 08:56:31.932627       1 server.go:154] "Starting Kubernetes Scheduler" version="v0.0.20241010"
-I1010 08:56:31.932663       1 server.go:156] "Golang settings" GOGC="" GOMAXPROCS="" GOTRACEBACK=""
-I1010 08:56:31.936292       1 requestheader_controller.go:169] Starting RequestHeaderAuthRequestController
-I1010 08:56:31.936317       1 configmap_cafile_content.go:202] "Starting controller" name="client-ca::kube-system::extension-apiserver-authentication::client-ca-file"
-I1010 08:56:31.936325       1 shared_informer.go:313] Waiting for caches to sync for RequestHeaderAuthRequestController
-I1010 08:56:31.936331       1 shared_informer.go:313] Waiting for caches to sync for client-ca::kube-system::extension-apiserver-authentication::client-ca-file
-I1010 08:56:31.936333       1 configmap_cafile_content.go:202] "Starting controller" name="client-ca::kube-system::extension-apiserver-authentication::requestheader-client-ca-file"
-I1010 08:56:31.936345       1 shared_informer.go:313] Waiting for caches to sync for client-ca::kube-system::extension-apiserver-authentication::requestheader-client-ca-file
-I1010 08:56:31.936434       1 secure_serving.go:213] Serving securely on [::]:10259
-I1010 08:56:31.936490       1 tlsconfig.go:240] "Starting DynamicServingCertificateController"
-I1010 08:56:32.036523       1 shared_informer.go:320] Caches are synced for client-ca::kube-system::extension-apiserver-authentication::client-ca-file
-I1010 08:56:32.036518       1 shared_informer.go:320] Caches are synced for RequestHeaderAuthRequestController
-I1010 08:56:32.036525       1 shared_informer.go:320] Caches are synced for client-ca::kube-system::extension-apiserver-authentication::requestheader-client-ca-file
-I1010 08:56:45.542032       1 topologyscheduler.go:110] "TopologyScheduling: PreFilter: get Node used" node="kind-worker" allocatable=1
-I1010 08:56:45.542136       1 topologyscheduler.go:110] "TopologyScheduling: PreFilter: get Node used" node="kind-worker2" allocatable=1
-I1010 08:56:45.542149       1 topologyscheduler.go:110] "TopologyScheduling: PreFilter: get Node used" node="kind-worker3" allocatable=1
-I1010 08:56:45.542156       1 topologyscheduler.go:110] "TopologyScheduling: PreFilter: get Node used" node="kind-worker4" allocatable=1
-I1010 08:56:45.572558       1 topologyscheduler.go:122] "TopologyScheduling: PreFilter: got network metrics" data={"Bandwidth":{"kind-worker":{"kind-worker2":503.93,"kind-worker3":15.23,"kind-worker4":504.06},"kind-worker2":{"kind-worker":467.02,"kind-worker3":97.52,"kind-worker4":471.01},"kind-worker3":{"kind-worker":469.54,"kind-worker2":469.51,"kind-worker4":93.53},"kind-worker4":{"kind-worker":47.39,"kind-worker2":49.49,"kind-worker3":27.05}},"Latency":{"kind-worker":{"kind-worker2":0.98,"kind-worker3":126.5,"kind-worker4":0.93},"kind-worker2":{"kind-worker":1.15,"kind-worker3":126.37,"kind-worker4":0.87},"kind-worker3":{"kind-worker":0.55,"kind-worker2":127.16,"kind-worker4":0.6},"kind-worker4":{"kind-worker":126.41,"kind-worker2":126.92,"kind-worker3":126.6}}}
-I1010 08:56:45.598397       1 topologyscheduler.go:129] "TopologyScheduling: PreFilter: got CRD Info" spec=[{"resource":"top-layer","dependencies":[{"resource":"mid-layer","bandwidth":{"requests":250,"limits":50},"latency":{"requests":5,"limits":15}}]},{"resource":"mid-layer","dependencies":[{"resource":"bottom-layer","bandwidth":{"requests":200,"limits":100},"latency":{"requests":10,"limits":15}}]},{"resource":"bottom-layer"}] status=[{"Resource":"bottom-layer","Order":1,"Phase":"Running","SchedulingInfo":[{"PodName":"deploy1-7bf65ddf-rmb69","NodeName":""}]},{"Resource":"mid-layer","Order":2,"Phase":"Running","SchedulingInfo":[{"PodName":"deploy2-745cd94cfc-l5qqx","NodeName":"kind-worker2"}]},{"Resource":"top-layer","Order":3,"Phase":"Running","SchedulingInfo":[{"PodName":"deploy3-54d8599cb5-4nkcc","NodeName":"kind-worker3"}]}]
-I1010 08:56:45.598578       1 topologyscheduler.go:146] "TopologyScheduling: PreFilter: get dependencies" resourceList=["bottom-layer","mid-layer","top-layer"] dependencies=[[100,200,15,10],[50,250,15,5]]
-I1010 08:56:45.598607       1 topologyscheduler.go:485] "Data: " combination=["kind-worker","kind-worker2","kind-worker3"] curBandwidth=503.93 curLatency=0.98 podRequirements=[[100,200,15,10],[50,250,15,5]]
-I1010 08:56:45.598619       1 topologyscheduler.go:485] "Data: " combination=["kind-worker","kind-worker2","kind-worker3"] curBandwidth=97.52 curLatency=126.37 podRequirements=[[100,200,15,10],[50,250,15,5]]
-I1010 08:56:45.598625       1 topologyscheduler.go:485] "Data: " combination=["kind-worker","kind-worker2","kind-worker4"] curBandwidth=503.93 curLatency=0.98 podRequirements=[[100,200,15,10],[50,250,15,5]]
-I1010 08:56:45.598631       1 topologyscheduler.go:485] "Data: " combination=["kind-worker","kind-worker2","kind-worker4"] curBandwidth=471.01 curLatency=0.87 podRequirements=[[100,200,15,10],[50,250,15,5]]
-I1010 08:56:45.598636       1 topologyscheduler.go:485] "Data: " combination=["kind-worker","kind-worker3","kind-worker4"] curBandwidth=15.23 curLatency=126.5 podRequirements=[[100,200,15,10],[50,250,15,5]]
-I1010 08:56:45.598642       1 topologyscheduler.go:485] "Data: " combination=["kind-worker2","kind-worker3","kind-worker4"] curBandwidth=97.52 curLatency=126.37 podRequirements=[[100,200,15,10],[50,250,15,5]]
-I1010 08:56:45.598652       1 topologyscheduler.go:149] "TopologyScheduling: PreFilter: got best node set" nodeSet=["kind-worker","kind-worker2","kind-worker4"] bestScore=400
-I1010 08:56:45.598751       1 topologyscheduler.go:165] "TopologyScheduler: Filter called" pod="deploy1-7bf65ddf-rmb69" node="kind-worker"
-I1010 08:56:45.598766       1 topologyscheduler.go:177] "TopologyScheduler: Filter: read data from PreFilter" data=["kind-worker","kind-worker2","kind-worker4"]
-I1010 08:56:45.598804       1 topologyscheduler.go:165] "TopologyScheduler: Filter called" pod="deploy1-7bf65ddf-rmb69" node="kind-worker4"
-I1010 08:56:45.598825       1 topologyscheduler.go:177] "TopologyScheduler: Filter: read data from PreFilter" data=["kind-worker","kind-worker2","kind-worker4"]
-I1010 08:56:45.598793       1 topologyscheduler.go:165] "TopologyScheduler: Filter called" pod="deploy1-7bf65ddf-rmb69" node="kind-worker3"
-I1010 08:56:45.599112       1 topologyscheduler.go:177] "TopologyScheduler: Filter: read data from PreFilter" data=["kind-worker","kind-worker2","kind-worker4"]
-I1010 08:56:45.598799       1 topologyscheduler.go:165] "TopologyScheduler: Filter called" pod="deploy1-7bf65ddf-rmb69" node="kind-worker2"
-I1010 08:56:45.599162       1 topologyscheduler.go:177] "TopologyScheduler: Filter: read data from PreFilter" data=["kind-worker","kind-worker2","kind-worker4"]
-I1010 08:56:45.615501       1 topologyscheduler.go:38] "TopologyScheduling: QueueSort called" pod1="deploy3-54d8599cb5-tsm85" pod2="deploy2-745cd94cfc-fs9l4"
-I1010 08:56:45.615805       1 topologyscheduler.go:51] "TopologyScheduling: QueueSort: Pods have resource label" pod1="deploy3-54d8599cb5-tsm85" Resource1="top-layer" pod2="deploy2-745cd94cfc-fs9l4" Resource2="mid-layer"
-I1010 08:56:45.633274       1 topologyscheduler.go:191] "TopologyScheduler: Filter: filter current node" pod="deploy1-7bf65ddf-rmb69" order=1 node="kind-worker4"
-I1010 08:56:45.633361       1 topologyscheduler.go:73] "TopologyScheduling: QueueSort: Got order level" order1=3 order2=2
-I1010 08:56:45.633521       1 topologyscheduler.go:191] "TopologyScheduler: Filter: filter current node" pod="deploy1-7bf65ddf-rmb69" order=1 node="kind-worker2"
-I1010 08:56:45.633743       1 topologyscheduler.go:188] "TopologyScheduler: Filter: pod should be scheduled on current node" pod="deploy1-7bf65ddf-rmb69" order=2 node="kind-worker"
-I1010 08:56:45.633802       1 topologyscheduler.go:191] "TopologyScheduler: Filter: filter current node" pod="deploy1-7bf65ddf-rmb69" order=1 node="kind-worker3"
-I1010 08:56:45.634013       1 topologyscheduler.go:110] "TopologyScheduling: PreFilter: get Node used" node="kind-worker" allocatable=1
-I1010 08:56:45.634037       1 topologyscheduler.go:110] "TopologyScheduling: PreFilter: get Node used" node="kind-worker2" allocatable=1
-I1010 08:56:45.634043       1 topologyscheduler.go:110] "TopologyScheduling: PreFilter: get Node used" node="kind-worker3" allocatable=1
-I1010 08:56:45.634047       1 topologyscheduler.go:110] "TopologyScheduling: PreFilter: get Node used" node="kind-worker4" allocatable=1
-I1010 08:56:45.641322       1 topologyscheduler.go:122] "TopologyScheduling: PreFilter: got network metrics" data={"Bandwidth":{"kind-worker":{"kind-worker2":503.93,"kind-worker3":15.23,"kind-worker4":504.06},"kind-worker2":{"kind-worker":467.02,"kind-worker3":97.52,"kind-worker4":471.01},"kind-worker3":{"kind-worker":469.54,"kind-worker2":469.51,"kind-worker4":93.53},"kind-worker4":{"kind-worker":47.39,"kind-worker2":49.49,"kind-worker3":27.05}},"Latency":{"kind-worker":{"kind-worker2":0.98,"kind-worker3":126.5,"kind-worker4":0.93},"kind-worker2":{"kind-worker":1.15,"kind-worker3":126.37,"kind-worker4":0.87},"kind-worker3":{"kind-worker":0.55,"kind-worker2":127.16,"kind-worker4":0.6},"kind-worker4":{"kind-worker":126.41,"kind-worker2":126.92,"kind-worker3":126.6}}}
-I1010 08:56:45.667899       1 topologyscheduler.go:129] "TopologyScheduling: PreFilter: got CRD Info" spec=[{"resource":"top-layer","dependencies":[{"resource":"mid-layer","bandwidth":{"requests":250,"limits":50},"latency":{"requests":5,"limits":15}}]},{"resource":"mid-layer","dependencies":[{"resource":"bottom-layer","bandwidth":{"requests":200,"limits":100},"latency":{"requests":10,"limits":15}}]},{"resource":"bottom-layer"}] status=[{"Resource":"bottom-layer","Order":1,"Phase":"Running","SchedulingInfo":[{"PodName":"deploy1-7bf65ddf-rmb69","NodeName":"kind-worker"}]},{"Resource":"mid-layer","Order":2,"Phase":"Running","SchedulingInfo":[{"PodName":"deploy2-745cd94cfc-l5qqx","NodeName":"kind-worker2"}]},{"Resource":"top-layer","Order":3,"Phase":"Running","SchedulingInfo":[{"PodName":"deploy3-54d8599cb5-tsm85","NodeName":""}]}]
-I1010 08:56:45.667943       1 topologyscheduler.go:146] "TopologyScheduling: PreFilter: get dependencies" resourceList=["bottom-layer","mid-layer","top-layer"] dependencies=[[100,200,15,10],[50,250,15,5]]
-I1010 08:56:45.667961       1 topologyscheduler.go:485] "Data: " combination=["kind-worker","kind-worker2","kind-worker3"] curBandwidth=503.93 curLatency=0.98 podRequirements=[[100,200,15,10],[50,250,15,5]]
-I1010 08:56:45.667972       1 topologyscheduler.go:485] "Data: " combination=["kind-worker","kind-worker2","kind-worker3"] curBandwidth=97.52 curLatency=126.37 podRequirements=[[100,200,15,10],[50,250,15,5]]
-I1010 08:56:45.667979       1 topologyscheduler.go:485] "Data: " combination=["kind-worker","kind-worker2","kind-worker4"] curBandwidth=503.93 curLatency=0.98 podRequirements=[[100,200,15,10],[50,250,15,5]]
-I1010 08:56:45.667983       1 topologyscheduler.go:485] "Data: " combination=["kind-worker","kind-worker2","kind-worker4"] curBandwidth=471.01 curLatency=0.87 podRequirements=[[100,200,15,10],[50,250,15,5]]
-I1010 08:56:45.667990       1 topologyscheduler.go:485] "Data: " combination=["kind-worker","kind-worker3","kind-worker4"] curBandwidth=15.23 curLatency=126.5 podRequirements=[[100,200,15,10],[50,250,15,5]]
-I1010 08:56:45.667996       1 topologyscheduler.go:485] "Data: " combination=["kind-worker2","kind-worker3","kind-worker4"] curBandwidth=97.52 curLatency=126.37 podRequirements=[[100,200,15,10],[50,250,15,5]]
-I1010 08:56:45.668005       1 topologyscheduler.go:149] "TopologyScheduling: PreFilter: got best node set" nodeSet=["kind-worker","kind-worker2","kind-worker4"] bestScore=400
-I1010 08:56:45.668093       1 topologyscheduler.go:165] "TopologyScheduler: Filter called" pod="deploy2-745cd94cfc-fs9l4" node="kind-worker"
-I1010 08:56:45.668118       1 topologyscheduler.go:177] "TopologyScheduler: Filter: read data from PreFilter" data=["kind-worker","kind-worker2","kind-worker4"]
-I1010 08:56:45.668153       1 topologyscheduler.go:165] "TopologyScheduler: Filter called" pod="deploy2-745cd94cfc-fs9l4" node="kind-worker3"
-I1010 08:56:45.668168       1 topologyscheduler.go:177] "TopologyScheduler: Filter: read data from PreFilter" data=["kind-worker","kind-worker2","kind-worker4"]
-I1010 08:56:45.668193       1 topologyscheduler.go:165] "TopologyScheduler: Filter called" pod="deploy2-745cd94cfc-fs9l4" node="kind-worker4"
-I1010 08:56:45.668202       1 topologyscheduler.go:177] "TopologyScheduler: Filter: read data from PreFilter" data=["kind-worker","kind-worker2","kind-worker4"]
-I1010 08:56:45.668137       1 topologyscheduler.go:165] "TopologyScheduler: Filter called" pod="deploy2-745cd94cfc-fs9l4" node="kind-worker2"
-I1010 08:56:45.668308       1 topologyscheduler.go:177] "TopologyScheduler: Filter: read data from PreFilter" data=["kind-worker","kind-worker2","kind-worker4"]
-I1010 08:56:45.681125       1 topologyscheduler.go:188] "TopologyScheduler: Filter: pod should be scheduled on current node" pod="deploy2-745cd94cfc-fs9l4" order=3 node="kind-worker2"
-I1010 08:56:45.681179       1 topologyscheduler.go:191] "TopologyScheduler: Filter: filter current node" pod="deploy2-745cd94cfc-fs9l4" order=2 node="kind-worker3"
-I1010 08:56:45.681234       1 topologyscheduler.go:191] "TopologyScheduler: Filter: filter current node" pod="deploy2-745cd94cfc-fs9l4" order=2 node="kind-worker"
-I1010 08:56:45.681379       1 topologyscheduler.go:191] "TopologyScheduler: Filter: filter current node" pod="deploy2-745cd94cfc-fs9l4" order=2 node="kind-worker4"
-I1010 08:56:45.681671       1 topologyscheduler.go:110] "TopologyScheduling: PreFilter: get Node used" node="kind-worker" allocatable=1
-I1010 08:56:45.681707       1 topologyscheduler.go:110] "TopologyScheduling: PreFilter: get Node used" node="kind-worker2" allocatable=1
-I1010 08:56:45.681716       1 topologyscheduler.go:110] "TopologyScheduling: PreFilter: get Node used" node="kind-worker3" allocatable=1
-I1010 08:56:45.681721       1 topologyscheduler.go:110] "TopologyScheduling: PreFilter: get Node used" node="kind-worker4" allocatable=1
-I1010 08:56:45.684151       1 topologyscheduler.go:122] "TopologyScheduling: PreFilter: got network metrics" data={"Bandwidth":{"kind-worker":{"kind-worker2":503.93,"kind-worker3":15.23,"kind-worker4":504.06},"kind-worker2":{"kind-worker":467.02,"kind-worker3":97.52,"kind-worker4":471.01},"kind-worker3":{"kind-worker":469.54,"kind-worker2":469.51,"kind-worker4":93.53},"kind-worker4":{"kind-worker":47.39,"kind-worker2":49.49,"kind-worker3":27.05}},"Latency":{"kind-worker":{"kind-worker2":0.98,"kind-worker3":126.5,"kind-worker4":0.93},"kind-worker2":{"kind-worker":1.15,"kind-worker3":126.37,"kind-worker4":0.87},"kind-worker3":{"kind-worker":0.55,"kind-worker2":127.16,"kind-worker4":0.6},"kind-worker4":{"kind-worker":126.41,"kind-worker2":126.92,"kind-worker3":126.6}}}
-I1010 08:56:45.717141       1 topologyscheduler.go:129] "TopologyScheduling: PreFilter: got CRD Info" spec=[{"resource":"top-layer","dependencies":[{"resource":"mid-layer","bandwidth":{"requests":250,"limits":50},"latency":{"requests":5,"limits":15}}]},{"resource":"mid-layer","dependencies":[{"resource":"bottom-layer","bandwidth":{"requests":200,"limits":100},"latency":{"requests":10,"limits":15}}]},{"resource":"bottom-layer"}] status=[{"Resource":"bottom-layer","Order":1,"Phase":"Running","SchedulingInfo":[{"PodName":"deploy1-7bf65ddf-rmb69","NodeName":"kind-worker"}]},{"Resource":"mid-layer","Order":2,"Phase":"Running","SchedulingInfo":[{"PodName":"deploy2-745cd94cfc-l5qqx","NodeName":"kind-worker2"}]},{"Resource":"top-layer","Order":3,"Phase":"Running","SchedulingInfo":[{"PodName":"deploy3-54d8599cb5-tsm85","NodeName":""}]}]
-I1010 08:56:45.717189       1 topologyscheduler.go:146] "TopologyScheduling: PreFilter: get dependencies" resourceList=["bottom-layer","mid-layer","top-layer"] dependencies=[[100,200,15,10],[50,250,15,5]]
-I1010 08:56:45.718541       1 topologyscheduler.go:485] "Data: " combination=["kind-worker","kind-worker2","kind-worker3"] curBandwidth=503.93 curLatency=0.98 podRequirements=[[100,200,15,10],[50,250,15,5]]
-I1010 08:56:45.718638       1 topologyscheduler.go:485] "Data: " combination=["kind-worker","kind-worker2","kind-worker3"] curBandwidth=97.52 curLatency=126.37 podRequirements=[[100,200,15,10],[50,250,15,5]]
-I1010 08:56:45.718690       1 topologyscheduler.go:485] "Data: " combination=["kind-worker","kind-worker2","kind-worker4"] curBandwidth=503.93 curLatency=0.98 podRequirements=[[100,200,15,10],[50,250,15,5]]
-I1010 08:56:45.719029       1 topologyscheduler.go:485] "Data: " combination=["kind-worker","kind-worker2","kind-worker4"] curBandwidth=471.01 curLatency=0.87 podRequirements=[[100,200,15,10],[50,250,15,5]]
-I1010 08:56:45.719068       1 topologyscheduler.go:485] "Data: " combination=["kind-worker","kind-worker3","kind-worker4"] curBandwidth=15.23 curLatency=126.5 podRequirements=[[100,200,15,10],[50,250,15,5]]
-I1010 08:56:45.719078       1 topologyscheduler.go:485] "Data: " combination=["kind-worker2","kind-worker3","kind-worker4"] curBandwidth=97.52 curLatency=126.37 podRequirements=[[100,200,15,10],[50,250,15,5]]
-I1010 08:56:45.719090       1 topologyscheduler.go:149] "TopologyScheduling: PreFilter: got best node set" nodeSet=["kind-worker","kind-worker2","kind-worker4"] bestScore=400
-I1010 08:56:45.719199       1 topologyscheduler.go:165] "TopologyScheduler: Filter called" pod="deploy3-54d8599cb5-tsm85" node="kind-worker2"
-I1010 08:56:45.719206       1 topologyscheduler.go:165] "TopologyScheduler: Filter called" pod="deploy3-54d8599cb5-tsm85" node="kind-worker"
-I1010 08:56:45.719216       1 topologyscheduler.go:177] "TopologyScheduler: Filter: read data from PreFilter" data=["kind-worker","kind-worker2","kind-worker4"]
-I1010 08:56:45.719254       1 topologyscheduler.go:165] "TopologyScheduler: Filter called" pod="deploy3-54d8599cb5-tsm85" node="kind-worker4"
-I1010 08:56:45.719280       1 topologyscheduler.go:177] "TopologyScheduler: Filter: read data from PreFilter" data=["kind-worker","kind-worker2","kind-worker4"]
-I1010 08:56:45.719239       1 topologyscheduler.go:165] "TopologyScheduler: Filter called" pod="deploy3-54d8599cb5-tsm85" node="kind-worker3"
-I1010 08:56:45.719372       1 topologyscheduler.go:177] "TopologyScheduler: Filter: read data from PreFilter" data=["kind-worker","kind-worker2","kind-worker4"]
-I1010 08:56:45.719218       1 topologyscheduler.go:177] "TopologyScheduler: Filter: read data from PreFilter" data=["kind-worker","kind-worker2","kind-worker4"]
-I1010 08:56:45.740344       1 topologyscheduler.go:191] "TopologyScheduler: Filter: filter current node" pod="deploy3-54d8599cb5-tsm85" order=3 node="kind-worker"
-I1010 08:56:45.740390       1 topologyscheduler.go:188] "TopologyScheduler: Filter: pod should be scheduled on current node" pod="deploy3-54d8599cb5-tsm85" order=4 node="kind-worker4"
-I1010 08:56:45.740519       1 topologyscheduler.go:191] "TopologyScheduler: Filter: filter current node" pod="deploy3-54d8599cb5-tsm85" order=3 node="kind-worker3"
-I1010 08:56:45.740645       1 topologyscheduler.go:191] "TopologyScheduler: Filter: filter current node" pod="deploy3-54d8599cb5-tsm85" order=3 node="kind-worker2"
+(.venv) ➜  workload_network git:(main) ✗ k logs scheduler-plugins-scheduler-78b75ffb99-cr6r9                                            
+I1011 02:36:22.111747       1 flags.go:64] FLAG: --allow-metric-labels="[]"
+I1011 02:36:22.111959       1 flags.go:64] FLAG: --allow-metric-labels-manifest=""
+I1011 02:36:22.112033       1 flags.go:64] FLAG: --authentication-kubeconfig=""
+I1011 02:36:22.112041       1 flags.go:64] FLAG: --authentication-skip-lookup="false"
+I1011 02:36:22.112054       1 flags.go:64] FLAG: --authentication-token-webhook-cache-ttl="10s"
+I1011 02:36:22.112062       1 flags.go:64] FLAG: --authentication-tolerate-lookup-failure="true"
+I1011 02:36:22.112066       1 flags.go:64] FLAG: --authorization-always-allow-paths="[/healthz,/readyz,/livez]"
+I1011 02:36:22.112351       1 flags.go:64] FLAG: --authorization-kubeconfig=""
+I1011 02:36:22.112461       1 flags.go:64] FLAG: --authorization-webhook-cache-authorized-ttl="10s"
+I1011 02:36:22.112470       1 flags.go:64] FLAG: --authorization-webhook-cache-unauthorized-ttl="10s"
+I1011 02:36:22.112475       1 flags.go:64] FLAG: --bind-address="0.0.0.0"
+I1011 02:36:22.112483       1 flags.go:64] FLAG: --cert-dir=""
+I1011 02:36:22.112493       1 flags.go:64] FLAG: --client-ca-file=""
+I1011 02:36:22.112619       1 flags.go:64] FLAG: --config="/etc/kubernetes/scheduler-config.yaml"
+I1011 02:36:22.112762       1 flags.go:64] FLAG: --contention-profiling="true"
+I1011 02:36:22.112773       1 flags.go:64] FLAG: --disabled-metrics="[]"
+I1011 02:36:22.112888       1 flags.go:64] FLAG: --feature-gates=""
+I1011 02:36:22.113053       1 flags.go:64] FLAG: --help="false"
+I1011 02:36:22.113062       1 flags.go:64] FLAG: --http2-max-streams-per-connection="0"
+I1011 02:36:22.113068       1 flags.go:64] FLAG: --kube-api-burst="100"
+I1011 02:36:22.113079       1 flags.go:64] FLAG: --kube-api-content-type="application/vnd.kubernetes.protobuf"
+I1011 02:36:22.113084       1 flags.go:64] FLAG: --kube-api-qps="50"
+I1011 02:36:22.113102       1 flags.go:64] FLAG: --kubeconfig=""
+I1011 02:36:22.113107       1 flags.go:64] FLAG: --leader-elect="true"
+I1011 02:36:22.113112       1 flags.go:64] FLAG: --leader-elect-lease-duration="15s"
+I1011 02:36:22.113121       1 flags.go:64] FLAG: --leader-elect-renew-deadline="10s"
+I1011 02:36:22.113125       1 flags.go:64] FLAG: --leader-elect-resource-lock="leases"
+I1011 02:36:22.113130       1 flags.go:64] FLAG: --leader-elect-resource-name="kube-scheduler"
+I1011 02:36:22.113134       1 flags.go:64] FLAG: --leader-elect-resource-namespace="kube-system"
+I1011 02:36:22.113142       1 flags.go:64] FLAG: --leader-elect-retry-period="2s"
+I1011 02:36:22.113147       1 flags.go:64] FLAG: --log-flush-frequency="5s"
+I1011 02:36:22.113152       1 flags.go:64] FLAG: --log-text-info-buffer-size="0"
+I1011 02:36:22.113160       1 flags.go:64] FLAG: --log-text-split-stream="false"
+I1011 02:36:22.113164       1 flags.go:64] FLAG: --logging-format="text"
+I1011 02:36:22.113169       1 flags.go:64] FLAG: --master=""
+I1011 02:36:22.113174       1 flags.go:64] FLAG: --permit-address-sharing="false"
+I1011 02:36:22.113178       1 flags.go:64] FLAG: --permit-port-sharing="false"
+I1011 02:36:22.113186       1 flags.go:64] FLAG: --pod-max-in-unschedulable-pods-duration="5m0s"
+I1011 02:36:22.113191       1 flags.go:64] FLAG: --profiling="true"
+I1011 02:36:22.113195       1 flags.go:64] FLAG: --requestheader-allowed-names="[]"
+I1011 02:36:22.113208       1 flags.go:64] FLAG: --requestheader-client-ca-file=""
+I1011 02:36:22.113213       1 flags.go:64] FLAG: --requestheader-extra-headers-prefix="[x-remote-extra-]"
+I1011 02:36:22.113223       1 flags.go:64] FLAG: --requestheader-group-headers="[x-remote-group]"
+I1011 02:36:22.113232       1 flags.go:64] FLAG: --requestheader-username-headers="[x-remote-user]"
+I1011 02:36:22.113241       1 flags.go:64] FLAG: --secure-port="10259"
+I1011 02:36:22.113246       1 flags.go:64] FLAG: --show-hidden-metrics-for-version=""
+I1011 02:36:22.113253       1 flags.go:64] FLAG: --tls-cert-file=""
+I1011 02:36:22.113258       1 flags.go:64] FLAG: --tls-cipher-suites="[]"
+I1011 02:36:22.113266       1 flags.go:64] FLAG: --tls-min-version=""
+I1011 02:36:22.113271       1 flags.go:64] FLAG: --tls-private-key-file=""
+I1011 02:36:22.113275       1 flags.go:64] FLAG: --tls-sni-cert-key="[]"
+I1011 02:36:22.113282       1 flags.go:64] FLAG: --v="1"
+I1011 02:36:22.113288       1 flags.go:64] FLAG: --version="false"
+I1011 02:36:22.113295       1 flags.go:64] FLAG: --vmodule=""
+I1011 02:36:22.113303       1 flags.go:64] FLAG: --write-config-to=""
+I1011 02:36:22.604127       1 serving.go:380] Generated self-signed cert in-memory
+W1011 02:36:22.604897       1 client_config.go:659] Neither --kubeconfig nor --master was specified.  Using the inClusterConfig.  This might not work.
+I1011 02:36:23.826139       1 topologyscheduler.go:230] "TopologyScheduling: Initializing plugin"
+I1011 02:36:23.827140       1 server.go:154] "Starting Kubernetes Scheduler" version="v0.0.20241010"
+I1011 02:36:23.827166       1 server.go:156] "Golang settings" GOGC="" GOMAXPROCS="" GOTRACEBACK=""
+I1011 02:36:23.957835       1 requestheader_controller.go:169] Starting RequestHeaderAuthRequestController
+I1011 02:36:23.957920       1 shared_informer.go:313] Waiting for caches to sync for RequestHeaderAuthRequestController
+I1011 02:36:23.957957       1 configmap_cafile_content.go:202] "Starting controller" name="client-ca::kube-system::extension-apiserver-authentication::client-ca-file"
+I1011 02:36:23.957971       1 shared_informer.go:313] Waiting for caches to sync for client-ca::kube-system::extension-apiserver-authentication::client-ca-file
+I1011 02:36:23.957987       1 configmap_cafile_content.go:202] "Starting controller" name="client-ca::kube-system::extension-apiserver-authentication::requestheader-client-ca-file"
+I1011 02:36:23.957995       1 shared_informer.go:313] Waiting for caches to sync for client-ca::kube-system::extension-apiserver-authentication::requestheader-client-ca-file
+I1011 02:36:23.958112       1 secure_serving.go:213] Serving securely on [::]:10259
+I1011 02:36:23.958175       1 tlsconfig.go:240] "Starting DynamicServingCertificateController"
+I1011 02:36:24.158395       1 shared_informer.go:320] Caches are synced for RequestHeaderAuthRequestController
+I1011 02:36:24.158497       1 shared_informer.go:320] Caches are synced for client-ca::kube-system::extension-apiserver-authentication::client-ca-file
+I1011 02:36:24.258929       1 shared_informer.go:320] Caches are synced for client-ca::kube-system::extension-apiserver-authentication::requestheader-client-ca-file
+I1011 02:36:25.289067       1 topologyscheduler.go:45] "TopologyScheduling: QueueSort called" pod1="mp-test-1-kw47g" pod2="mp-test-2-hj2rd"
+I1011 02:36:25.289154       1 topologyscheduler.go:63] "TopologyScheduling: QueueSort: Pods have resource label" pod1="mp-test-1-kw47g" Resource1="mid-layer" pod2="mp-test-2-hj2rd" Resource2="top-layer"
+I1011 02:36:25.417904       1 topologyscheduler.go:85] "TopologyScheduling: QueueSort: Got order level" order1=2 order2=3
+I1011 02:36:25.418023       1 topologyscheduler.go:45] "TopologyScheduling: QueueSort called" pod1="mp-test-0-qqhxh" pod2="mp-test-1-kw47g"
+I1011 02:36:25.418038       1 topologyscheduler.go:63] "TopologyScheduling: QueueSort: Pods have resource label" pod1="mp-test-0-qqhxh" Resource1="bottom-layer" pod2="mp-test-1-kw47g" Resource2="mid-layer"
+I1011 02:36:25.546859       1 topologyscheduler.go:85] "TopologyScheduling: QueueSort: Got order level" order1=1 order2=2
+I1011 02:36:25.558972       1 topologyscheduler.go:45] "TopologyScheduling: QueueSort called" pod1="mp-test-2-hj2rd" pod2="mp-test-1-kw47g"
+I1011 02:36:25.558999       1 topologyscheduler.go:63] "TopologyScheduling: QueueSort: Pods have resource label" pod1="mp-test-2-hj2rd" Resource1="top-layer" pod2="mp-test-1-kw47g" Resource2="mid-layer"
+I1011 02:36:25.687130       1 topologyscheduler.go:85] "TopologyScheduling: QueueSort: Got order level" order1=3 order2=2
+I1011 02:36:25.687281       1 topologyscheduler.go:122] "TopologyScheduling: PreFilter: get Node used" node="worker-4" allocatable=1
+I1011 02:36:25.687357       1 topologyscheduler.go:122] "TopologyScheduling: PreFilter: get Node used" node="worker-5" allocatable=1
+I1011 02:36:25.687368       1 topologyscheduler.go:122] "TopologyScheduling: PreFilter: get Node used" node="worker-1" allocatable=1
+I1011 02:36:25.687375       1 topologyscheduler.go:122] "TopologyScheduling: PreFilter: get Node used" node="worker-2" allocatable=1
+I1011 02:36:25.687384       1 topologyscheduler.go:122] "TopologyScheduling: PreFilter: get Node used" node="worker-0" allocatable=1
+I1011 02:36:25.687391       1 topologyscheduler.go:122] "TopologyScheduling: PreFilter: get Node used" node="worker-3" allocatable=1
+I1011 02:36:25.816443       1 topologyscheduler.go:134] "TopologyScheduling: PreFilter: got network metrics" data={"Bandwidth":{"worker-0":{"worker-1":951.46,"worker-2":27.59,"worker-3":9.2,"worker-4":8.96,"worker-5":31.38},"worker-1":{"worker-0":884.77,"worker-2":49.7,"worker-3":60.18,"worker-4":2.41,"worker-5":43.83},"worker-2":{"worker-0":17.1,"worker-1":4.06,"worker-3":1017.52,"worker-4":1.59,"worker-5":1.77},"worker-3":{"worker-0":2.06,"worker-1":17.82,"worker-2":1019.19,"worker-4":1.17,"worker-5":3.69},"worker-4":{"worker-0":47.18,"worker-1":33.55,"worker-2":24.12,"worker-3":27.89,"worker-5":912.85},"worker-5":{"worker-0":89.13,"worker-1":2.45,"worker-2":27.89,"worker-3":1.64,"worker-4":913.29}},"Latency":{"worker-0":{"worker-1":0.53,"worker-2":120.14,"worker-3":120.35,"worker-4":115.77,"worker-5":117.49},"worker-1":{"worker-0":1.34,"worker-2":120.78,"worker-3":122.93,"worker-4":117.5,"worker-5":116.85},"worker-2":{"worker-0":124.75,"worker-1":120.99,"worker-3":0.61,"worker-4":233.35,"worker-5":228.25},"worker-3":{"worker-0":121.22,"worker-1":121.06,"worker-2":5.64,"worker-4":229.84,"worker-5":229.55},"worker-4":{"worker-0":115.88,"worker-1":117.16,"worker-2":228.99,"worker-3":229.27,"worker-5":0.8},"worker-5":{"worker-0":118.24,"worker-1":116.74,"worker-2":228.93,"worker-3":229.12,"worker-4":0.69}}}
+I1011 02:36:25.945096       1 topologyscheduler.go:141] "TopologyScheduling: PreFilter: got CRD Info" spec=[{"resource":"top-layer","dependencies":[{"resource":"mid-layer","bandwidth":{"requests":50,"limits":1},"latency":{"requests":50,"limits":999}}]},{"resource":"mid-layer","dependencies":[{"resource":"bottom-layer","bandwidth":{"requests":50,"limits":1},"latency":{"requests":10,"limits":999}}]},{"resource":"bottom-layer"}] status=[{"Resource":"bottom-layer","Order":1,"Phase":"Pending","SchedulingInfo":[{"PodName":"mp-test-0-qqhxh","NodeName":""}]},{"Resource":"mid-layer","Order":2,"Phase":"Pending","SchedulingInfo":[{"PodName":"mp-test-1-kw47g","NodeName":""}]},{"Resource":"top-layer","Order":3,"Phase":"Pending","SchedulingInfo":[{"PodName":"mp-test-2-hj2rd","NodeName":""}]}]
+I1011 02:36:25.945282       1 topologyscheduler.go:158] "TopologyScheduling: PreFilter: get dependencies" resourceList=["bottom-layer","mid-layer","top-layer"] dependencies=[[1,50,999,10],[1,50,999,50]]
+I1011 02:36:25.945312       1 topologyscheduler.go:161] "TopologyScheduling: PreFilter: got best node set" nodeSet=[] bestScore="<internal error: json: unsupported value: -Inf>"
+I1011 02:36:25.945412       1 topologyscheduler.go:177] "TopologyScheduler: Filter called" pod="mp-test-0-qqhxh" node="worker-4"
+I1011 02:36:25.945428       1 topologyscheduler.go:189] "TopologyScheduler: Filter: read data from PreFilter" data=[]
+I1011 02:36:25.945712       1 topologyscheduler.go:177] "TopologyScheduler: Filter called" pod="mp-test-0-qqhxh" node="worker-5"
+I1011 02:36:25.945732       1 topologyscheduler.go:189] "TopologyScheduler: Filter: read data from PreFilter" data=[]
+I1011 02:36:25.945855       1 topologyscheduler.go:177] "TopologyScheduler: Filter called" pod="mp-test-0-qqhxh" node="worker-1"
+I1011 02:36:25.945869       1 topologyscheduler.go:189] "TopologyScheduler: Filter: read data from PreFilter" data=[]
+I1011 02:36:25.946114       1 topologyscheduler.go:177] "TopologyScheduler: Filter called" pod="mp-test-0-qqhxh" node="worker-2"
+I1011 02:36:25.946125       1 topologyscheduler.go:189] "TopologyScheduler: Filter: read data from PreFilter" data=[]
+I1011 02:36:25.946181       1 topologyscheduler.go:177] "TopologyScheduler: Filter called" pod="mp-test-0-qqhxh" node="worker-0"
+I1011 02:36:25.946193       1 topologyscheduler.go:189] "TopologyScheduler: Filter: read data from PreFilter" data=[]
+I1011 02:36:25.946436       1 topologyscheduler.go:177] "TopologyScheduler: Filter called" pod="mp-test-0-qqhxh" node="worker-3"
+I1011 02:36:25.946448       1 topologyscheduler.go:189] "TopologyScheduler: Filter: read data from PreFilter" data=[]
+E1011 02:36:26.076334       1 runtime.go:79] Observed a panic: runtime.boundsError{x:0, y:0, signed:true, code:0x0} (runtime error: index out of range [0] with length 0)
+goroutine 430 [running]:
+k8s.io/apimachinery/pkg/util/runtime.logPanic({0x2602f40, 0xc000945f20})
+        /workspace/vendor/k8s.io/apimachinery/pkg/util/runtime/runtime.go:75 +0x85
+k8s.io/apimachinery/pkg/util/runtime.HandleCrash({0x0, 0x0, 0xc000d8dc00?})
+        /workspace/vendor/k8s.io/apimachinery/pkg/util/runtime/runtime.go:49 +0x6b
+panic({0x2602f40?, 0xc000945f20?})
+        /usr/local/go/src/runtime/panic.go:770 +0x132
+sigs.k8s.io/scheduler-plugins/pkg/topologyscheduling.(*TopologyScheduling).Filter(0xc000633b00?, {0x408946?, 0x135?}, 0xc000da7380, 0xc000e23688, 0xc000dbbd40)
+        /workspace/pkg/topologyscheduling/topologyscheduler.go:199 +0x99b
+k8s.io/kubernetes/pkg/scheduler/framework/runtime.(*instrumentedFilterPlugin).Filter(0xc0004859a0, {0x2ba6900, 0xc000cff770}, 0xc000da7380, 0xc000e23688, 0xc000dbbd40)
+        /workspace/vendor/k8s.io/kubernetes/pkg/scheduler/framework/runtime/instrumented_plugins.go:37 +0x6b
+k8s.io/kubernetes/pkg/scheduler/framework/runtime.(*frameworkImpl).runFilterPlugin(0x26d0e40?, {0x2ba6900?, 0xc000cff770?}, {0x2b88cf8?, 0xc0004859a0?}, 0x1d143c5?, 0xc000394dc0?, 0xc000d902f0?)
+        /workspace/vendor/k8s.io/kubernetes/pkg/scheduler/framework/runtime/framework.go:879 +0x294
+k8s.io/kubernetes/pkg/scheduler/framework/runtime.(*frameworkImpl).RunFilterPlugins(0xc0005886c8, {0x2ba6900, 0xc000cff770}, 0xc000da7380, 0xc000e23688, 0xc000dbbd40)
+        /workspace/vendor/k8s.io/kubernetes/pkg/scheduler/framework/runtime/framework.go:863 +0x27d
+k8s.io/kubernetes/pkg/scheduler/framework/runtime.(*frameworkImpl).RunFilterPluginsWithNominatedPods(0xc0005886c8, {0x2ba6938, 0xc000958230}, 0xc000da7380, 0xc000e23688, 0xc000dbbd40)
+        /workspace/vendor/k8s.io/kubernetes/pkg/scheduler/framework/runtime/framework.go:992 +0x1c8
+k8s.io/kubernetes/pkg/scheduler.(*Scheduler).findNodesThatPassFilters.func1(0x40ad3e?)
+        /workspace/vendor/k8s.io/kubernetes/pkg/scheduler/schedule_one.go:609 +0xe4
+k8s.io/kubernetes/pkg/scheduler/framework/parallelize.Parallelizer.Until.func1(0x6)
+        /workspace/vendor/k8s.io/kubernetes/pkg/scheduler/framework/parallelize/parallelism.go:60 +0x46
+k8s.io/client-go/util/workqueue.ParallelizeUntil.func1()
+        /workspace/vendor/k8s.io/client-go/util/workqueue/parallelizer.go:90 +0xfa
+created by k8s.io/client-go/util/workqueue.ParallelizeUntil in goroutine 426
+        /workspace/vendor/k8s.io/client-go/util/workqueue/parallelizer.go:76 +0x1fb
+panic: runtime error: index out of range [0] with length 0 [recovered]
+        panic: runtime error: index out of range [0] with length 0
+
+goroutine 430 [running]:
+k8s.io/apimachinery/pkg/util/runtime.HandleCrash({0x0, 0x0, 0xc000d8dc00?})
+        /workspace/vendor/k8s.io/apimachinery/pkg/util/runtime/runtime.go:56 +0xcd
+panic({0x2602f40?, 0xc000945f20?})
+        /usr/local/go/src/runtime/panic.go:770 +0x132
+sigs.k8s.io/scheduler-plugins/pkg/topologyscheduling.(*TopologyScheduling).Filter(0xc000633b00?, {0x408946?, 0x135?}, 0xc000da7380, 0xc000e23688, 0xc000dbbd40)
+        /workspace/pkg/topologyscheduling/topologyscheduler.go:199 +0x99b
+k8s.io/kubernetes/pkg/scheduler/framework/runtime.(*instrumentedFilterPlugin).Filter(0xc0004859a0, {0x2ba6900, 0xc000cff770}, 0xc000da7380, 0xc000e23688, 0xc000dbbd40)
+        /workspace/vendor/k8s.io/kubernetes/pkg/scheduler/framework/runtime/instrumented_plugins.go:37 +0x6b
+k8s.io/kubernetes/pkg/scheduler/framework/runtime.(*frameworkImpl).runFilterPlugin(0x26d0e40?, {0x2ba6900?, 0xc000cff770?}, {0x2b88cf8?, 0xc0004859a0?}, 0x1d143c5?, 0xc000394dc0?, 0xc000d902f0?)
+        /workspace/vendor/k8s.io/kubernetes/pkg/scheduler/framework/runtime/framework.go:879 +0x294
+k8s.io/kubernetes/pkg/scheduler/framework/runtime.(*frameworkImpl).RunFilterPlugins(0xc0005886c8, {0x2ba6900, 0xc000cff770}, 0xc000da7380, 0xc000e23688, 0xc000dbbd40)
+        /workspace/vendor/k8s.io/kubernetes/pkg/scheduler/framework/runtime/framework.go:863 +0x27d
+k8s.io/kubernetes/pkg/scheduler/framework/runtime.(*frameworkImpl).RunFilterPluginsWithNominatedPods(0xc0005886c8, {0x2ba6938, 0xc000958230}, 0xc000da7380, 0xc000e23688, 0xc000dbbd40)
+        /workspace/vendor/k8s.io/kubernetes/pkg/scheduler/framework/runtime/framework.go:992 +0x1c8
+k8s.io/kubernetes/pkg/scheduler.(*Scheduler).findNodesThatPassFilters.func1(0x40ad3e?)
+        /workspace/vendor/k8s.io/kubernetes/pkg/scheduler/schedule_one.go:609 +0xe4
+k8s.io/kubernetes/pkg/scheduler/framework/parallelize.Parallelizer.Until.func1(0x6)
+        /workspace/vendor/k8s.io/kubernetes/pkg/scheduler/framework/parallelize/parallelism.go:60 +0x46
+k8s.io/client-go/util/workqueue.ParallelizeUntil.func1()
+        /workspace/vendor/k8s.io/client-go/util/workqueue/parallelizer.go:90 +0xfa
+created by k8s.io/client-go/util/workqueue.ParallelizeUntil in goroutine 426
+        /workspace/vendor/k8s.io/client-go/util/workqueue/parallelizer.go:76 +0x1fb
